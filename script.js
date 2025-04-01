@@ -5,43 +5,51 @@ document.addEventListener("DOMContentLoaded", () => {
   // Nom du repo GitHub Pages
   const githubBaseURL = "https://SuFanAccount.github.io/CV"; // Remplace par ton vrai URL GitHub Pages
 
-  // Variables d'état
-  let currentDirectory = "CV";
-  const directories = ["projects", "contact"];
+    // Variables d'état
+  let currentDirectory = "CV"; // Répertoire racine modifié à 'CV'
+  const directories = ["projects", "contact"]; // Répertoires valides sous 'CV'
 
-  // Introduction
+  // Introduction avant le shell
   const introText = `Bienvenue sur mon CV interactif en ligne !\n\n
 Tapez 'ls' pour voir les fichiers disponibles.\n
 Tapez 'cd projects' pour voir mes projets.\n
 Tapez 'cd contact' pour obtenir mes informations de contact.\n\n
 Prêt à commencer ? Tapez une commande...\n`;
 
+  // Afficher l'introduction
   output.innerHTML = `<span class="intro-text">${introText}</span>`;
 
-  let prompt = "CV@guest:~# ";
+  let prompt = "CV@guest:~# "; // Invite de commande
 
-  // Commandes
+  // Liste des commandes
   const commands = {
     ls: () => {
-      return "projects  contact  cv.pdf"; 
+      if (currentDirectory === "CV") {
+        return "projects  contact  cv.pdf"; // Afficher les fichiers dans le répertoire 'CV'
+      }
+      return "Aucun fichier ici.";
     },
     cat: (args) => {
-      if (args[0] === "cv.pdf") {
-        window.open(`${githubBaseURL}/cv.pdf`, "_blank"); // Ouvre le CV dans un nouvel onglet
+      if (args[0] === "cv.pdf" && currentDirectory === "CV") {
+        window.location.href = `${githubBaseURL}/cv.pdf`; // Téléchargement automatique
         return "Téléchargement de cv.pdf...";
       }
       return "Fichier non trouvé.";
     },
     cd: (args) => {
-      if (directories.includes(args[0])) {
-        window.location.href = `${githubBaseURL}/${args[0]}/index.html`; // Redirection correcte
+      if (args[0] === "projects" && currentDirectory === "CV") {
+        window.location.href = `${githubBaseURL}/projects`; // Redirection vers la page projects
+        return;
+      }
+      if (args[0] === "contact" && currentDirectory === "CV") {
+        window.location.href = `${githubBaseURL}/contact`; // Redirection vers la page contact
         return;
       }
       return "Répertoire non trouvé.";
     }
   };
 
-  // Gestion des entrées
+  // Gestion des commandes
   commandInput.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
       const command = commandInput.value.trim();
@@ -51,6 +59,7 @@ Prêt à commencer ? Tapez une commande...\n`;
     }
   });
 
+  // Fonction d'exécution des commandes
   function executeCommand(command) {
     const args = command.split(" ");
     const cmd = args[0];
@@ -62,6 +71,6 @@ Prêt à commencer ? Tapez une commande...\n`;
       output.innerHTML += `<span class="output">Commande inconnue: ${cmd}</span><br>`;
     }
 
-    output.scrollTop = output.scrollHeight; 
+    output.scrollTop = output.scrollHeight; // Scroll vers le bas
   }
 });
