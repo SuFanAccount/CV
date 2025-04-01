@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const githubBaseURL = "https://sufanaccount.github.io/CV"; // Remplace par ton vrai URL GitHub Pages
 
   // Variables d'état
-  let currentDirectory = "CV"; // Répertoire racine
+  let currentDirectory = "CV"; // Répertoire racine modifié à 'CV'
   const directories = ["projects", "contact"]; // Répertoires valides sous 'CV'
 
   // Introduction avant le shell
@@ -25,33 +25,39 @@ Prêt à commencer ? Tapez une commande...\n`;
   const commands = {
     ls: () => {
       if (currentDirectory === "CV") {
-        return "projects  contact  cv.pdf"; // Afficher les fichiers dans 'CV'
+        return "projects  contact  cv.pdf"; // Afficher les fichiers dans le répertoire 'CV'
       }
       return "Aucun fichier ici.";
     },
     cat: (args) => {
+      if (!args[0]) {
+        return "Veuillez spécifier un fichier à afficher.";
+      }
       if (args[0] === "cv.pdf" && currentDirectory === "CV") {
-        output.innerHTML += `<br>Téléchargement de <a href="${githubBaseURL}/cv.pdf" target="_blank">cv.pdf</a>...<br>`;
+        output.innerHTML += `<span class="output">Téléchargement de cv.pdf...</span><br>`;
         setTimeout(() => {
           window.location.href = `${githubBaseURL}/cv.pdf`;
-        }, 500); // Petit délai pour garantir l'exécution
+        }, 1000);
         return "";
       }
       return "Fichier non trouvé.";
     },
     cd: (args) => {
+      if (!args[0]) {
+        return "Veuillez spécifier un répertoire.";
+      }
       if (args[0] === "projects" && currentDirectory === "CV") {
-        output.innerHTML += `<br>Redirection vers projects...<br>`;
+        output.innerHTML += `<span class="output">Accès à 'projects'...</span><br>`;
         setTimeout(() => {
           window.location.href = `${githubBaseURL}/projects`;
-        }, 500);
+        }, 1000);
         return "";
       }
       if (args[0] === "contact" && currentDirectory === "CV") {
-        output.innerHTML += `<br>Redirection vers contact...<br>`;
+        output.innerHTML += `<span class="output">Accès à 'contact'...</span><br>`;
         setTimeout(() => {
           window.location.href = `${githubBaseURL}/contact`;
-        }, 500);
+        }, 1000);
         return "";
       }
       return "Répertoire non trouvé.";
@@ -74,7 +80,7 @@ Prêt à commencer ? Tapez une commande...\n`;
     const cmd = args[0];
 
     if (commands[cmd]) {
-      const result = commands[cmd](args);
+      const result = commands[cmd](args.slice(1));
       if (result) output.innerHTML += `<span class="output">${result}</span><br>`;
     } else {
       output.innerHTML += `<span class="output">Commande inconnue: ${cmd}</span><br>`;
