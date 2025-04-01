@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     cat: (args) => {
       if (args[0] === "cv.pdf") {
-        return "Télécharger le CV: [Mahi Chahid.pdf]";
+        return "Télécharger le CV: [mahi_chahid_cv.pdf]";
       }
       return "Fichier non trouvé.";
     },
