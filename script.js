@@ -8,8 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const introText = `Bienvenue sur mon CV interactif en ligne !\n\nTapez 'ls' pour voir les fichiers disponibles.\nTapez 'cd projects' pour voir mes projets.\nTapez 'cd contact' pour obtenir mes informations de contact.\n\nPrêt à commencer ? Tapez une commande pour commencer...\n`;
 
   // Afficher l'introduction
-  output.innerHTML = introText;
-  
+  output.innerHTML = `<span class="intro-text">${introText}</span>`;
+
   let prompt = "root@guest:~# "; // Invitation à entrer une commande
   let history = [];
 
