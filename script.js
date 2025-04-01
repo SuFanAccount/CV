@@ -5,8 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // Nom du repo GitHub Pages
   const githubBaseURL = "https://sufanaccount.github.io/CV"; // Remplace par ton vrai URL GitHub Pages
 
-    // Variables d'état
-  let currentDirectory = "CV"; // Répertoire racine modifié à 'CV'
+  // Variables d'état
+  let currentDirectory = "CV"; // Répertoire racine
   const directories = ["projects", "contact"]; // Répertoires valides sous 'CV'
 
   // Introduction avant le shell
@@ -25,25 +25,34 @@ Prêt à commencer ? Tapez une commande...\n`;
   const commands = {
     ls: () => {
       if (currentDirectory === "CV") {
-        return "projects  contact  cv.pdf"; // Afficher les fichiers dans le répertoire 'CV'
+        return "projects  contact  cv.pdf"; // Afficher les fichiers dans 'CV'
       }
       return "Aucun fichier ici.";
     },
     cat: (args) => {
       if (args[0] === "cv.pdf" && currentDirectory === "CV") {
-        window.location.href = `${githubBaseURL}/cv.pdf`; // Téléchargement automatique
-        return "Téléchargement de cv.pdf...";
+        output.innerHTML += `<br>Téléchargement de <a href="${githubBaseURL}/cv.pdf" target="_blank">cv.pdf</a>...<br>`;
+        setTimeout(() => {
+          window.location.href = `${githubBaseURL}/cv.pdf`;
+        }, 500); // Petit délai pour garantir l'exécution
+        return "";
       }
       return "Fichier non trouvé.";
     },
     cd: (args) => {
       if (args[0] === "projects" && currentDirectory === "CV") {
-        window.location.href = `${githubBaseURL}/projects`; // Redirection vers la page projects
-        return;
+        output.innerHTML += `<br>Redirection vers projects...<br>`;
+        setTimeout(() => {
+          window.location.href = `${githubBaseURL}/projects`;
+        }, 500);
+        return "";
       }
       if (args[0] === "contact" && currentDirectory === "CV") {
-        window.location.href = `${githubBaseURL}/contact`; // Redirection vers la page contact
-        return;
+        output.innerHTML += `<br>Redirection vers contact...<br>`;
+        setTimeout(() => {
+          window.location.href = `${githubBaseURL}/contact`;
+        }, 500);
+        return "";
       }
       return "Répertoire non trouvé.";
     }
