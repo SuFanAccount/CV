@@ -7,11 +7,37 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Projets réalisés</h1>
-  <ul>
-    <li>Projet 1: Description du projet</li>
-    <li>Projet 2: Description du projet</li>
-    <!-- Ajoute ici tes projets -->
-  </ul>
+  <div class="terminal">
+    <h1 id="title">Projets réalisés</h1>
+    <ul id="project-list">
+      <li>Projet 1: Description du projet</li>
+      <li>Projet 2: Description du projet</li>
+      <!-- Ajoute ici tes projets -->
+    </ul>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      function typeEffect(element, speed) {
+        let text = element.innerHTML;
+        element.innerHTML = "";
+        let i = 0;
+        function typing() {
+          if (i < text.length) {
+            element.innerHTML += text.charAt(i);
+            i++;
+            setTimeout(typing, speed);
+          }
+        }
+        typing();
+      }
+      
+      let title = document.getElementById("title");
+      let projects = document.querySelectorAll("#project-list li");
+      typeEffect(title, 50);
+      projects.forEach((proj, index) => {
+        setTimeout(() => typeEffect(proj, 50), (index + 1) * 500);
+      });
+    });
+  </script>
 </body>
 </html>
