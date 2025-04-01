@@ -28,23 +28,52 @@
 
         term.open(document.getElementById('terminal')); // Ouvrir le terminal dans l'élément div
 
+        // Structure des répertoires
+        const filesystem = {
+            "root": {
+                "contact": "Bienvenue dans la section contact !\nVous pouvez envoyer un message à travers notre formulaire.",
+                "projets": "Bienvenue dans la section projets !\nIci vous trouverez une liste de mes projets.",
+                "cv.pdf": "Téléchargez mon CV en cliquant [ici](mon_cv.pdf)."
+            }
+        };
+
+        // Initialisation du chemin
+        let currentPath = "root"; 
+
         // Fonction pour gérer les commandes
         const commands = {
             'ls': function() {
-                term.writeln('Documents  CV.pdf  Projets');
+                const files = Object.keys(filesystem[currentPath] || {});
+                if (files.length === 0) {
+                    term.writeln('Aucun fichier ou dossier.');
+                } else {
+                    files.forEach(file => term.writeln(file));
+                }
             },
             'cat cv.pdf': function() {
                 term.writeln('Affichage du CV...');
                 term.writeln('Téléchargez-le ici : <a href="mon_cv.pdf" target="_blank">Mon CV</a>');
             },
+            'cd': function(arg) {
+                if (arg === "") {
+                    term.writeln("Vous devez spécifier un dossier. Par exemple : `cd contact`.");
+                } else if (filesystem[currentPath][arg]) {
+                    currentPath = arg; // Changer le répertoire
+                    term.writeln(`Vous êtes maintenant dans le dossier: ${arg}`);
+                } else {
+                    term.writeln("Dossier introuvable.");
+                }
+            },
+            'clear': function() {
+                term.clear();
+            },
             'help': function() {
                 term.writeln('Commandes disponibles :');
                 term.writeln('ls');
                 term.writeln('cat cv.pdf');
+                term.writeln('cd <dossier>');
+                term.writeln('clear');
                 term.writeln('help');
-            },
-            'clear': function() {
-                term.clear();
             },
             'default': function() {
                 term.writeln('Commande inconnue. Tapez "help" pour obtenir de l\'aide.');
@@ -54,10 +83,14 @@
         // Fonction pour analyser les commandes
         term.onData(function(data) {
             if (data === '\r') {
-                const input = term._core.buffer.x;
-                const command = input.trim().toLowerCase();
+                const input = term._core.buffer.x.trim();
+                const args = input.split(' ');
+                const command = args[0];
+                const argument = args[1] || "";
+
+                // Gérer les commandes
                 if (commands[command]) {
-                    commands[command]();
+                    commands[command](argument);
                 } else {
                     commands['default']();
                 }
@@ -67,7 +100,9 @@
             }
         });
 
+        // Affichage initial du terminal
         term.writeln('$ Bienvenue dans le terminal interactif');
+        term.write('$ Vous êtes actuellement dans le répertoire root');
         term.write('\r\n$ ');
     </script>
 </body>
