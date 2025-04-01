@@ -3,8 +3,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const commandInput = document.getElementById("command");
 
   // Variables d'état
-  let currentDirectory = 'root'; // Répertoire actuel (on commence à la racine)
-  const directories = ['projects', 'contact']; // Répertoires valides
+  let currentDirectory = 'CV'; // Répertoire racine modifié à 'CV'
+  const directories = ['projects', 'contact']; // Répertoires valides sous 'CV'
 
   // Introduction avant le shell
   const introText = `Bienvenue sur mon CV interactif en ligne !\n\nTapez 'ls' pour voir les fichiers disponibles.\nTapez 'cd projects' pour voir mes projets.\nTapez 'cd contact' pour obtenir mes informations de contact.\n\nPrêt à commencer ? Tapez une commande pour commencer...\n`;
@@ -12,32 +12,32 @@ document.addEventListener("DOMContentLoaded", () => {
   // Afficher l'introduction
   output.innerHTML = `<span class="intro-text">${introText}</span>`;
 
-  let prompt = "root@guest:~# "; // Invitation initiale
+  let prompt = "CV@guest:~# "; // Invitation initiale
 
   // Liste des commandes
   const commands = {
     ls: () => {
-      // Si l'on est dans 'root', on affiche les éléments principaux
-      if (currentDirectory === 'root') {
+      // Si l'on est dans 'CV', on affiche les éléments principaux
+      if (currentDirectory === 'CV') {
         return "projects  contact  cv.pdf";
       }
       // Si l'on est dans un sous-répertoire, afficher les fichiers spécifiques
       return "";
     },
     cat: (args) => {
-      if (args[0] === "cv.pdf") {
-        return "Télécharger le CV: [cv.pdf]";
+      if (args[0] === "cv.pdf" && currentDirectory === "CV") {
+        return "Télécharger le CV: [cv.pdf]"; // Message pour télécharger le fichier
       }
       return "Fichier non trouvé.";
     },
     cd: (args) => {
-      if (args[0] === "projects" && !directories.includes(currentDirectory)) {
+      if (args[0] === "projects" && currentDirectory === "CV") {
         currentDirectory = "projects";
-        prompt = "root@guest:/projects# ";
+        prompt = "CV@guest:/projects# ";
         return "Changement de répertoire vers 'projects'";
-      } else if (args[0] === "contact" && !directories.includes(currentDirectory)) {
+      } else if (args[0] === "contact" && currentDirectory === "CV") {
         currentDirectory = "contact";
-        prompt = "root@guest:/contact# ";
+        prompt = "CV@guest:/contact# ";
         return "Changement de répertoire vers 'contact'";
       }
       return "Répertoire non trouvé.";
