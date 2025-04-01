@@ -11,14 +11,19 @@ body {
     font-size: 18px;
 }
 
+/* Animation de l'écriture pour les éléments de texte */
+h1, p, ul li, a {
+    overflow: hidden; /* Cache le texte au début */
+    white-space: nowrap; /* Évite les retours à la ligne */
+    animation: typing 2s steps(30) 1s forwards, blink 0.75s step-end infinite; /* Animation d'écriture */
+}
+
 h1 {
     text-align: center;
     margin: 20px 0;
     font-size: 36px;
     text-transform: uppercase;
-    overflow: hidden; /* Pour masquer le texte pendant l'animation */
-    white-space: nowrap; /* Evite les retours à la ligne */
-    animation: typing 2s steps(30) 1s forwards, blink 0.75s step-end infinite; /* Animation d'écriture */
+    animation-delay: 0s; /* Titre avec une animation plus rapide */
 }
 
 .shell {
@@ -43,10 +48,12 @@ ul {
 
 ul li {
     margin: 10px 0;
+    animation-delay: 2.5s; /* Les éléments de la liste apparaissent après le texte principal */
 }
 
 a {
     cursor: pointer;
+    animation-delay: 4s; /* Liens apparaissent après les autres éléments */
 }
 
 /* Animation de l'écriture */
