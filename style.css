@@ -1,74 +1,29 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Courier New', Courier, monospace;
-}
-
 body {
-    background-color: black;
-    color: #00ff00;
-    font-size: 18px;
+  background-color: black;
+  color: green;
+  font-family: "Courier New", Courier, monospace;
+  margin: 0;
+  padding: 0;
 }
 
-/* Animation de l'écriture pour les éléments de texte */
-h1, p, ul li, a {
-    overflow: hidden; /* Cache le texte au début */
-    white-space: nowrap; /* Évite les retours à la ligne */
-    animation: typing 2s steps(30) 1s forwards, blink 0.75s step-end infinite; /* Animation d'écriture */
+.terminal {
+  padding: 10px;
+  width: 100%;
+  height: 100vh;
+  overflow-y: auto;
 }
 
-h1 {
-    text-align: center;
-    margin: 20px 0;
-    font-size: 36px;
-    text-transform: uppercase;
-    animation-delay: 0s; /* Titre avec une animation plus rapide */
+input[type="text"] {
+  background: black;
+  border: none;
+  color: green;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 18px;
+  outline: none;
+  width: 100%;
 }
 
-.shell {
-    margin: 20px;
-    padding: 20px;
-    border: 2px solid #00ff00;
-    background-color: black;
-}
-
-.link {
-    color: #00ff00;
-    text-decoration: none;
-}
-
-.link:hover {
-    text-decoration: underline;
-}
-
-ul {
-    margin-left: 20px;
-}
-
-ul li {
-    margin: 10px 0;
-    animation-delay: 2.5s; /* Les éléments de la liste apparaissent après le texte principal */
-}
-
-a {
-    cursor: pointer;
-    animation-delay: 4s; /* Liens apparaissent après les autres éléments */
-}
-
-/* Animation de l'écriture */
-@keyframes typing {
-    from {
-        width: 0;
-    }
-    to {
-        width: 100%;
-    }
-}
-
-/* Animation du curseur clignotant */
-@keyframes blink {
-    50% {
-        border-color: transparent;
-    }
+pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
