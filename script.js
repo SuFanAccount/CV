@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const commandInput = document.getElementById("command");
 
   // Nom du repo GitHub Pages
-  const githubBaseURL = "https://SuFanAccount.github.io/CV"; // Remplace par ton vrai URL GitHub Pages
+  const githubBaseURL = "https://ton-github.github.io/CV"; // Remplace par ton vrai URL GitHub Pages
 
   // Variables d'état
   let currentDirectory = "CV"; // Répertoire racine modifié à 'CV'
@@ -31,18 +31,18 @@ Prêt à commencer ? Tapez une commande...\n`;
     },
     cat: (args) => {
       if (args[0] === "cv.pdf" && currentDirectory === "CV") {
-        window.location.href = `${sufanaccount.github.io/CV}/cv.pdf`; // Téléchargement automatique
+        window.location.href = `${githubBaseURL}/cv.pdf`; // Téléchargement automatique
         return "Téléchargement de cv.pdf...";
       }
       return "Fichier non trouvé.";
     },
     cd: (args) => {
       if (args[0] === "projects" && currentDirectory === "CV") {
-        window.location.href = `${sufanaccount.github.io/CV}/projects`; // Redirection vers la page projects
+        window.location.href = `${githubBaseURL}/projects`; // Redirection vers la page projects
         return;
       }
       if (args[0] === "contact" && currentDirectory === "CV") {
-        window.location.href = `${sufanaccount.github.io/CV}/contact`; // Redirection vers la page contact
+        window.location.href = `${githubBaseURL}/contact`; // Redirection vers la page contact
         return;
       }
       return "Répertoire non trouvé.";
