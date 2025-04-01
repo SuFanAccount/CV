@@ -38,11 +38,11 @@ Prêt à commencer ? Tapez une commande...\n`;
     },
     cd: (args) => {
       if (args[0] === "projects" && currentDirectory === "CV") {
-        window.location.href = `${sufanaccount.github.io/CV/}/projects`; // Redirection vers la page projects
+        window.location.href = `${sufanaccount.github.io/CV}/projects`; // Redirection vers la page projects
         return;
       }
       if (args[0] === "contact" && currentDirectory === "CV") {
-        window.location.href = `${sufanaccount.github.io/CV/}/contact`; // Redirection vers la page contact
+        window.location.href = `${sufanaccount.github.io/CV}/contact`; // Redirection vers la page contact
         return;
       }
       return "Répertoire non trouvé.";
