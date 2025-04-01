@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const commandInput = document.getElementById("command");
 
   // Nom du repo GitHub Pages
-  const githubBaseURL = "https://github.com/SuFanAccount.github.io/CV"; // Remplace par ton vrai URL GitHub Pages
+  const githubBaseURL = "https://SuFanAccount.github.io/CV"; // Remplace par ton vrai URL GitHub Pages
 
   // Variables d'état
   let currentDirectory = "CV"; // Répertoire racine modifié à 'CV'
