@@ -4,40 +4,42 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Projects</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background-color: black;
+      color: lime;
+      font-family: monospace;
+      padding: 20px;
+    }
+    .terminal {
+      white-space: pre;
+      overflow: hidden;
+    }
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+    .typing-effect {
+      display: inline-block;
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 2px solid lime;
+      width: 0;
+      animation: typing 3s steps(30, end) forwards, blink 0.8s infinite;
+    }
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+  </style>
 </head>
 <body>
   <div class="terminal">
-    <h1 id="title">Projets réalisés</h1>
-    <ul id="project-list">
-      <li>Projet 1: Description du projet</li>
-      <li>Projet 2: Description du projet</li>
+    <h1 class="typing-effect">Projets réalisés</h1>
+    <ul>
+      <li class="typing-effect">Projet 1: Description du projet</li>
+      <li class="typing-effect">Projet 2: Description du projet</li>
       <!-- Ajoute ici tes projets -->
     </ul>
   </div>
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      function typeEffect(element, speed) {
-        let text = element.innerHTML;
-        element.innerHTML = "";
-        let i = 0;
-        function typing() {
-          if (i < text.length) {
-            element.innerHTML += text.charAt(i);
-            i++;
-            setTimeout(typing, speed);
-          }
-        }
-        typing();
-      }
-      
-      let title = document.getElementById("title");
-      let projects = document.querySelectorAll("#project-list li");
-      typeEffect(title, 50);
-      projects.forEach((proj, index) => {
-        setTimeout(() => typeEffect(proj, 50), (index + 1) * 500);
-      });
-    });
-  </script>
 </body>
 </html>
