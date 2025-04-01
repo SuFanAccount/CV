@@ -1,109 +1,17 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon CV</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/xterm@4.9.0/lib/xterm.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xterm@4.9.0/css/xterm.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="shell">
-        <h1>Terminal Interactif</h1>
-        <div id="terminal"></div> <!-- Le terminal sera ici -->
-    </div>
-
-    <script>
-        // Initialisation du terminal interactif
-        const term = new Terminal({
-            cols: 80,
-            rows: 24,
-            cursorBlink: true,
-            theme: {
-                foreground: '#00ff00',
-                background: 'black',
-            }
-        });
-
-        term.open(document.getElementById('terminal')); // Ouvrir le terminal dans l'élément div
-
-        // Structure des répertoires
-        const filesystem = {
-            "root": {
-                "contact": "Bienvenue dans la section contact !\nVous pouvez envoyer un message à travers notre formulaire.",
-                "projets": "Bienvenue dans la section projets !\nIci vous trouverez une liste de mes projets.",
-                "cv.pdf": "Téléchargez mon CV en cliquant [ici](mon_cv.pdf)."
-            }
-        };
-
-        // Initialisation du chemin
-        let currentPath = "root"; 
-
-        // Fonction pour gérer les commandes
-        const commands = {
-            'ls': function() {
-                const files = Object.keys(filesystem[currentPath] || {});
-                if (files.length === 0) {
-                    term.writeln('Aucun fichier ou dossier.');
-                } else {
-                    files.forEach(file => term.writeln(file));
-                }
-            },
-            'cat cv.pdf': function() {
-                term.writeln('Affichage du CV...');
-                term.writeln('Téléchargez-le ici : <a href="mon_cv.pdf" target="_blank">Mon CV</a>');
-            },
-            'cd': function(arg) {
-                if (arg === "") {
-                    term.writeln("Vous devez spécifier un dossier. Par exemple : `cd contact`.");
-                } else if (filesystem[currentPath][arg]) {
-                    currentPath = arg; // Changer le répertoire
-                    term.writeln(`Vous êtes maintenant dans le dossier: ${arg}`);
-                } else {
-                    term.writeln("Dossier introuvable.");
-                }
-            },
-            'clear': function() {
-                term.clear();
-            },
-            'help': function() {
-                term.writeln('Commandes disponibles :');
-                term.writeln('ls');
-                term.writeln('cat cv.pdf');
-                term.writeln('cd <dossier>');
-                term.writeln('clear');
-                term.writeln('help');
-            },
-            'default': function() {
-                term.writeln('Commande inconnue. Tapez "help" pour obtenir de l\'aide.');
-            }
-        };
-
-        // Fonction pour analyser les commandes
-        term.onData(function(data) {
-            if (data === '\r') {
-                const input = term._core.buffer.x.trim();
-                const args = input.split(' ');
-                const command = args[0];
-                const argument = args[1] || "";
-
-                // Gérer les commandes
-                if (commands[command]) {
-                    commands[command](argument);
-                } else {
-                    commands['default']();
-                }
-                term.write('\r\n$ '); // Afficher le prompt du terminal
-            } else {
-                term.write(data);
-            }
-        });
-
-        // Affichage initial du terminal
-        term.writeln('$ Bienvenue dans le terminal interactif');
-        term.write('$ Vous êtes actuellement dans le répertoire root');
-        term.write('\r\n$ ');
-    </script>
+  <div class="terminal">
+    <pre id="output"></pre>
+    <input type="text" id="command" autofocus>
+  </div>
+  
+  <script src="script.js"></script>
 </body>
 </html>
