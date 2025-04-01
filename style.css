@@ -1,0 +1,47 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body {
+    background-color: black;
+    color: #00ff00;
+    font-size: 18px;
+}
+
+h1 {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 36px;
+    text-transform: uppercase;
+}
+
+.shell {
+    margin: 20px;
+    padding: 20px;
+    border: 2px solid #00ff00;
+    background-color: black;
+}
+
+.link {
+    color: #00ff00;
+    text-decoration: none;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+ul {
+    margin-left: 20px;
+}
+
+ul li {
+    margin: 10px 0;
+}
+
+a {
+    cursor: pointer;
+}
