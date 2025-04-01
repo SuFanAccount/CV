@@ -16,6 +16,9 @@ h1 {
     margin: 20px 0;
     font-size: 36px;
     text-transform: uppercase;
+    overflow: hidden; /* Pour masquer le texte pendant l'animation */
+    white-space: nowrap; /* Evite les retours à la ligne */
+    animation: typing 2s steps(30) 1s forwards, blink 0.75s step-end infinite; /* Animation d'écriture */
 }
 
 .shell {
@@ -44,4 +47,21 @@ ul li {
 
 a {
     cursor: pointer;
+}
+
+/* Animation de l'écriture */
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+/* Animation du curseur clignotant */
+@keyframes blink {
+    50% {
+        border-color: transparent;
+    }
 }
