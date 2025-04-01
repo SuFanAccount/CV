@@ -59,7 +59,7 @@ Prêt à commencer ? Tapez une commande...\n`;
       if (directories.includes(args[0])) {
         output.innerHTML += `<span class="output">Accès à '${args[0]}'...</span><br>`;
         setTimeout(() => {
-          window.location.href = `${githubBaseURL}/${args[0]/index.html}`;
+          window.location.href = `${githubBaseURL}/${args[0]}/index.html`;
         }, 1000);
         return "";
       }
