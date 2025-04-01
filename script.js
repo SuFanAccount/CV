@@ -4,6 +4,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let isRoot = true;
 
+  // Introduction avant le shell
+  const introText = `Bienvenue sur mon CV interactif en ligne !\n\nTapez 'ls' pour voir les fichiers disponibles.\nTapez 'cd projects' pour voir mes projets.\nTapez 'cd contact' pour obtenir mes informations de contact.\n\nPrêt à commencer ? Tapez une commande pour commencer...\n`;
+
+  // Afficher l'introduction
+  output.innerHTML = introText;
+  
+  let prompt = "root@guest:~# "; // Invitation à entrer une commande
+  let history = [];
+
+  // Liste des commandes
   const commands = {
     ls: () => {
       return isRoot ? "projects  contact  cv.pdf" : "";
@@ -30,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.key === "Enter") {
       const command = commandInput.value;
       commandInput.value = "";
-      output.innerHTML += `<span class="command">> ${command}</span><br>`;
+      output.innerHTML += `<span class="prompt">${prompt}</span><span class="command">${command}</span><br>`;
       executeCommand(command);
     }
   });
@@ -39,10 +49,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const args = command.split(" ");
     const cmd = args[0];
     if (commands[cmd]) {
-      output.innerHTML += `${commands[cmd](args)}<br>`;
+      output.innerHTML += `<span class="output">${commands[cmd](args)}</span><br>`;
     } else {
-      output.innerHTML += `Commande inconnue: ${cmd}<br>`;
+      output.innerHTML += `<span class="output">Commande inconnue: ${cmd}</span><br>`;
     }
-    output.scrollTop = output.scrollHeight; // Scrolling
+    output.scrollTop = output.scrollHeight; // Scroll down
+    prompt = "root@guest:~# "; // Réinitialiser le prompt après chaque commande
   }
 });
