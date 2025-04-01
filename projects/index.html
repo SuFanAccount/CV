@@ -19,27 +19,52 @@
       from { width: 0; }
       to { width: 100%; }
     }
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
     .typing-effect {
       display: inline-block;
       overflow: hidden;
       white-space: nowrap;
       border-right: 2px solid lime;
       width: 0;
-      animation: typing 3s steps(30, end) forwards, blink 0.8s infinite;
-    }
-    @keyframes blink {
-      50% { border-color: transparent; }
+      animation: typing 2s steps(30, end) forwards, blink 0.8s infinite;
     }
   </style>
 </head>
 <body>
   <div class="terminal">
-    <h1 class="typing-effect">Projets réalisés</h1>
+    <h1 id="title" class="typing-effect" style="animation-delay: 0s;"></h1>
     <ul>
-      <li class="typing-effect">Projet 1: Description du projet</li>
-      <li class="typing-effect">Projet 2: Description du projet</li>
+      <li id="proj1" class="typing-effect" style="animation-delay: 2s;"></li>
+      <li id="proj2" class="typing-effect" style="animation-delay: 4s;"></li>
       <!-- Ajoute ici tes projets -->
     </ul>
   </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const texts = [
+        { id: "title", text: "Projets réalisés", delay: 0 },
+        { id: "proj1", text: "Projet 1: Description du projet", delay: 2000 },
+        { id: "proj2", text: "Projet 2: Description du projet", delay: 4000 }
+      ];
+      
+      texts.forEach(({ id, text, delay }) => {
+        setTimeout(() => {
+          let el = document.getElementById(id);
+          let i = 0;
+          function type() {
+            if (i < text.length) {
+              el.textContent += text.charAt(i);
+              i++;
+              setTimeout(type, 50);
+            }
+          }
+          type();
+        }, delay);
+      });
+    });
+  </script>
 </body>
 </html>
