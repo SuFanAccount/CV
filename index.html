@@ -66,19 +66,13 @@ pre {
   animation: blink 0.8s infinite;
 }
 
-@keyframes blink {
-  50% {
-    opacity: 0;
-  }
-}
-
 /* Animation d'écriture pour chaque ligne */
 .typing {
   display: inline-block;
   width: 0;
   white-space: nowrap;
   overflow: hidden;
-  animation: typing 2s steps(30) 1s forwards, blink 0.8s infinite step-end;
+  animation: typing 2s steps(30) 1s forwards;
 }
 
 @keyframes typing {
@@ -113,7 +107,7 @@ pre {
 Type 'help', it will probably help you\n\n
 Hope you did used kali before : \n\n`;
 
-      output.innerHTML = `<span class="intro-text">${introText}</span>`;
+      output.innerHTML = `<span class="typing intro-text">${introText}</span>`;
 
       let prompt = "CV@guest:~# "; 
 
