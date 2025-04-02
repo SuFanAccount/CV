@@ -9,15 +9,15 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentDirectory = "CV"; 
   const files = ["cv.pdf"];
   const directories = ["projects", "contact"]; 
-  const commandsList = ["ls", "cd", "cat", "wget", "clear"];
+  const commandsList = ["ls", "cd", "cat", "wget", "clear", "help"];
 
   // Introduction avant le shell
   const introText = `Bienvenue sur mon CV interactif en ligne !\n\n
 Tapez 'ls' pour voir les fichiers disponibles.\n
-Tapez 'cd' pour accéder a un répertoire.\n
-Tapez 'cat file' pour afficher .\n
-Tapez 'wget file' pour télécharger.\n
-Tapez "clear" pour nettoyer le shell.\n\n
+Tapez 'cd projects' pour voir mes projets.\n
+Tapez 'cat cv.pdf' pour afficher mon CV directement.\n
+Tapez 'wget cv.pdf' pour télécharger mon CV.\n
+Tapez 'help' pour voir la liste des commandes.\n\n
 Prêt à commencer ? Tapez une commande...\n`;
 
   output.innerHTML = `<span class="intro-text">${introText}</span>`;
@@ -69,6 +69,17 @@ Prêt à commencer ? Tapez une commande...\n`;
     clear: () => {
       output.innerHTML = "";
       return "";
+    },
+    help: () => {
+      return `
+        <strong>Liste des commandes disponibles :</strong><br>
+        <span class="output">ls</span> - Affiche les fichiers et répertoires du répertoire courant.<br>
+        <span class="output">cd <i>répertoire</i></span> - Change de répertoire. Par exemple, 'cd projects'.<br>
+        <span class="output">cat <i>fichier</i></span> - Affiche le contenu d'un fichier texte. Exemple : 'cat cv.pdf'.<br>
+        <span class="output">wget <i>fichier</i></span> - Télécharge un fichier. Exemple : 'wget cv.pdf'.<br>
+        <span class="output">clear</span> - Efface l'écran du terminal.<br>
+        <span class="output">help</span> - Affiche cette aide avec la liste des commandes.<br>
+      `;
     }
   };
 
