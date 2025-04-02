@@ -16,11 +16,16 @@
 
     .terminal {
       padding: 20px;
+      white-space: nowrap;
+      overflow-x: auto;
+      height: 100vh;
+      box-sizing: border-box;
     }
 
     ul {
       list-style: none;
       padding: 0;
+      margin: 0;
     }
 
     li {
@@ -34,7 +39,7 @@
       width: 0;
       white-space: nowrap;
       overflow: hidden;
-      animation: typing 2s steps(30) 1s forwards;
+      animation: typing 3s steps(40) 1s forwards;
     }
 
     @keyframes typing {
@@ -42,21 +47,35 @@
         width: 100%;
       }
     }
+
+    .prompt {
+      color: #66FF00; /* Couleur de la commande dans le shell */
+    }
+
+    .command {
+      color: #00FFFF; /* Couleur des commandes entrées */
+    }
+
+    .project {
+      color: #FFD700; /* Couleur pour les titres de projets */
+    }
   </style>
 </head>
 <body>
   <div class="terminal">
     <ul>
-      <li id="proj1" class="typing"></li>
-      <li id="proj2" class="typing"></li>
+      <li class="prompt">user@github:~$ <span class="command">cd projects</span></li>
+      <li class="prompt">user@github:~/projects$ <span class="command">ls</span></li>
+      <li class="typing project" id="proj1"></li>
+      <li class="typing project" id="proj2"></li>
     </ul>
   </div>
 
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       const texts = [
-        { id: "proj1", text: "Projet 1: Description du projet" },
-        { id: "proj2", text: "Projet 2: Description du projet" }
+        { id: "proj1", text: "Projet 1: Un outil de surveillance réseau" },
+        { id: "proj2", text: "Projet 2: Application web sécurisée avec base de données" }
       ];
 
       texts.forEach(({ id, text }, index) => {
