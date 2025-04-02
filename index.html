@@ -101,13 +101,17 @@ pre {
       const files = ["cv.pdf", "motivation_letter.txt"];
       const directories = ["projects", "contact"]; 
       const commandsList = ["ls", "cd", "cat", "wget", "clear", "help"];
+      let introShown = false; // Flag pour vérifier si l'intro a été affichée
 
       // Introduction avant le shell
       const introText = `Welcome guest\n\n
 Type 'help', it will probably help you\n\n
 Hope you did used kali before : \n\n`;
 
-      output.innerHTML = `<span class="typing intro-text">${introText}</span>`;
+      if (!introShown) {
+    output.innerHTML = `<span class="typing intro-text">${introText}</span>`;
+    introShown = true;
+  }
 
       let prompt = "CV@guest:~# "; 
 
