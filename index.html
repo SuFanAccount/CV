@@ -65,6 +65,10 @@ pre {
   background-color: #00FF00;
   animation: blink 0.8s infinite;
 }
+
+@keyframes blink {
+      50% { opacity: 0; }
+    }
   </style>
 </head>
 <body>
@@ -88,11 +92,20 @@ pre {
       const commandsList = ["ls", "cd", "cat", "wget", "clear", "help"];
 
       // Introduction avant le shell
-      const introText = `Welcome guest\n\n
-Type 'help', it will probably help you\n\n
-Hope you did used kali before : \n\n`;
+      const introText = `Welcome guest\n\nType 'help', it will probably help you\n\nHope you did used kali before : \n\n`;
+      let index = 0;
 
-      output.innerHTML = `<span class="intro-text">${introText}</span>`;
+      function typeWriter() {
+        if (index < introText.length) {
+          output.innerHTML += introText.charAt(index);
+          index++;
+          setTimeout(typeWriter, 50);
+        } else {
+          output.innerHTML += "<br>";
+        }
+      }
+
+      typeWriter();
 
       let prompt = "CV@guest:~# "; 
 
