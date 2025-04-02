@@ -14,9 +14,10 @@ document.addEventListener("DOMContentLoaded", () => {
   // Introduction avant le shell
   const introText = `Bienvenue sur mon CV interactif en ligne !\n\n
 Tapez 'ls' pour voir les fichiers disponibles.\n
-Tapez 'cd projects' pour voir mes projets.\n
-Tapez 'cat cv.pdf' pour afficher mon CV directement.\n
-Tapez 'wget cv.pdf' pour télécharger mon CV.\n\n
+Tapez 'cd' pour accéder a un répertoire.\n
+Tapez 'cat file' pour afficher .\n
+Tapez 'wget file' pour télécharger.\n
+Tapez "clear" pour nettoyer le shell.\n\n
 Prêt à commencer ? Tapez une commande...\n`;
 
   output.innerHTML = `<span class="intro-text">${introText}</span>`;
