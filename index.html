@@ -5,6 +5,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CV</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background-color: black;
+      color: green;
+      font-family: 'Courier New', monospace;
+      padding: 20px;
+    }
+    .terminal {
+      white-space: pre-wrap;
+      font-size: 18px;
+    }
+    .output {
+      display: inline;
+    }
+    #command {
+      background: transparent;
+      color: green;
+      border: none;
+      outline: none;
+      font-family: 'Courier New', monospace;
+      font-size: 18px;
+      width: 100%;
+    }
+    .prompt {
+      font-weight: bold;
+    }
+    .command {
+      color: lightgreen;
+    }
+    .intro-text {
+      font-style: italic;
+    }
+  </style>
 </head>
 <body>
   <div class="terminal">
@@ -12,6 +45,92 @@
     <input type="text" id="command" autofocus>
   </div>
 
-  <script src="script.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const output = document.getElementById("output");
+      const commandInput = document.getElementById("command");
+
+      const githubBaseURL = "https://sufanaccount.github.io/CV"; // Remplace par ton vrai URL GitHub Pages
+      let currentDirectory = "CV";
+      const files = ["cv.pdf"];
+      const directories = ["projects", "contact"];
+      const commandsList = ["ls", "cd", "cat", "wget", "clear", "help"];
+      
+      const introText = `Welcome guest\n\nType 'help', it will probably help you\n\nHope you did used kali before : \n`;
+
+      function typeText(text, element, callback) {
+        let index = 0;
+        function type() {
+          if (index < text.length) {
+            element.innerHTML += text.charAt(index);
+            index++;
+            setTimeout(type, 50);
+          } else if (callback) {
+            callback();
+          }
+        }
+        type();
+      }
+
+      function displaySequence() {
+        typeText(introText, output, () => {
+          typeText("Projets réalisés", output, () => {
+            typeText("\n\nProjet 1: Description du projet", output, () => {
+              typeText("\n\nProjet 2: Description du projet", output, () => {
+                promptDisplay();
+              });
+            });
+          });
+        });
+      }
+
+      function promptDisplay() {
+        let prompt = "CV@guest:~# ";
+        output.innerHTML += `<span class="prompt">${prompt}</span>`;
+      }
+
+      displaySequence();
+
+      commandInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+          const command = commandInput.value.trim();
+          commandInput.value = "";
+          output.innerHTML += `<span class="prompt">${"CV@guest:~# "}</span><span class="command">${command}</span><br>`;
+          executeCommand(command);
+        }
+        if (e.key === "Tab") {
+          e.preventDefault();
+          autocomplete(commandInput);
+        }
+      });
+
+      function executeCommand(command) {
+        const args = command.split(" ");
+        const cmd = args[0];
+
+        if (commands[cmd]) {
+          const result = commands[cmd](args.slice(1));
+          if (result) output.innerHTML += `<span class="output">${result}</span><br>`;
+        } else {
+          output.innerHTML += `<span class="output">Commande inconnue: ${cmd}</span><br>`;
+        }
+        
+        output.scrollTop = output.scrollHeight;
+      }
+
+      function autocomplete(input) {
+        const value = input.value.trim();
+        if (!value) return;
+
+        let suggestions = [...commandsList, ...directories, ...files].filter(item => item.startsWith(value));
+
+        if (suggestions.length === 1) {
+          input.value = suggestions[0] + " ";
+        } else if (suggestions.length > 1) {
+          output.innerHTML += `<span class="output">${suggestions.join("  ")}</span><br>`;
+        }
+      }
+    });
+  </script>
 </body>
 </html>
