@@ -4,7 +4,47 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mon CV</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background-color: #0a0a0a;
+      color: #00ff00;
+      font-family: "Courier New", Courier, monospace;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    .terminal {
+      width: 100%;
+      height: 100vh;
+      padding: 10px;
+      box-sizing: border-box;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+    .output {
+      color: #00ff00;
+      font-size: 1.2em;
+    }
+    .intro-message {
+      font-size: 1.5em;
+      color: #00ff00;
+      display: inline;
+      animation: typing 3s steps(30) 1s 1 normal both, blink 0.75s step-end infinite;
+    }
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+    .prompt {
+      color: #00ff00;
+    }
+    .command {
+      color: #00ff00;
+    }
+  </style>
 </head>
 <body>
   <div class="terminal">
@@ -14,128 +54,128 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-  const output = document.getElementById("output");
-  const commandInput = document.getElementById("command");
+      const output = document.getElementById("output");
+      const commandInput = document.getElementById("command");
 
-  // Nom du repo GitHub Pages
-  const githubBaseURL = "https://sufanaccount.github.io/CV"; // Remplace par ton vrai URL GitHub Pages
+      // Nom du repo GitHub Pages
+      const githubBaseURL = "https://sufanaccount.github.io/CV"; // Remplace par ton vrai URL GitHub Pages
 
-  // Variables d'état
-  let currentDirectory = "CV"; 
-  const files = ["cv.pdf"];
-  const directories = ["projects", "contact"]; 
-  const commandsList = ["ls", "cd", "cat", "wget", "clear", "help"];
+      // Variables d'état
+      let currentDirectory = "CV"; 
+      const files = ["cv.pdf"];
+      const directories = ["projects", "contact"]; 
+      const commandsList = ["ls", "cd", "cat", "wget", "clear", "help"];
 
-  // Introduction avant le shell
-  const introText = `Welcome guest\n\n
+      // Introduction avant le shell
+      const introText = `Welcome guest\n\n
 Type 'help', it will probably help you\n\n
 Hope you did used kali before : \n`;
 
-  output.innerHTML = `<span class="intro-message">${introText}</span>`;
+      output.innerHTML = `<span class="intro-message">${introText}</span>`;
 
-  let prompt = "CV@guest:~# "; 
+      let prompt = "CV@guest:~# "; 
 
-  // Liste des commandes
-  const commands = {
-    ls: () => {
-      if (currentDirectory === "CV") {
-        return `${directories.join("  ")}  ${files.join("  ")}`;
+      // Liste des commandes
+      const commands = {
+        ls: () => {
+          if (currentDirectory === "CV") {
+            return `${directories.join("  ")}  ${files.join("  ")}`;
+          }
+          return "Aucun fichier ici.";
+        },
+        cat: (args) => {
+          if (!args[0]) return "Veuillez spécifier un fichier.";
+          if (args[0] === "cv.pdf" && currentDirectory === "CV") {
+            fetch(`${githubBaseURL}/cv.pdf`)
+              .then(response => response.text())
+              .then(text => {
+                output.innerHTML += `<pre class="output">${text}</pre><br>`;
+              })
+              .catch(() => {
+                output.innerHTML += `<span class="output">Erreur : Impossible d'afficher cv.pdf</span><br>`;
+              });
+            return "Affichage du contenu de cv.pdf...";
+          }
+          return "Fichier non trouvé.";
+        },
+        wget: (args) => {
+          if (!args[0]) return "Veuillez spécifier un fichier.";
+          if (args[0] === "cv.pdf" && currentDirectory === "CV") {
+            window.location.href = `${githubBaseURL}/cv.pdf`;
+            return "Téléchargement de cv.pdf...";
+          }
+          return "Fichier non trouvé.";
+        },
+        cd: (args) => {
+          if (!args[0]) return "Veuillez spécifier un répertoire.";
+          if (directories.includes(args[0])) {
+            output.innerHTML += `<span class="output">Accès à '${args[0]}'...</span><br>`;
+            setTimeout(() => {
+              window.location.href = `${githubBaseURL}/${args[0]}/index.html`;
+            }, 1000);
+            return "";
+          }
+          return "Répertoire non trouvé.";
+        },
+        clear: () => {
+          output.innerHTML = "";
+          return "";
+        },
+        help: () => {
+          return `
+            <strong>Liste des commandes disponibles :</strong><br>
+            <span class="output">ls</span> - Affiche les fichiers et répertoires du répertoire courant.<br>
+            <span class="output">cd <i>répertoire</i></span> - Change de répertoire. Par exemple, 'cd projects'.<br>
+            <span class="output">cat <i>fichier</i></span> - Affiche le contenu d'un fichier texte. Exemple : 'cat cv.pdf'.<br>
+            <span class="output">wget <i>fichier</i></span> - Télécharge un fichier. Exemple : 'wget cv.pdf'.<br>
+            <span class="output">clear</span> - Efface l'écran du terminal.<br>
+            <span class="output">help</span> - Affiche cette aide avec la liste des commandes.<br>
+          `;
+        }
+      };
+
+      // Gestion des commandes
+      commandInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+          const command = commandInput.value.trim();
+          commandInput.value = "";
+          output.innerHTML += `<span class="prompt">${prompt}</span><span class="command">${command}</span><br>`;
+          executeCommand(command);
+        }
+        if (e.key === "Tab") {
+          e.preventDefault();
+          autocomplete(commandInput);
+        }
+      });
+
+      function executeCommand(command) {
+        const args = command.split(" ");
+        const cmd = args[0];
+
+        if (commands[cmd]) {
+          const result = commands[cmd](args.slice(1));
+          if (result) output.innerHTML += `<span class="output">${result}</span><br>`;
+        } else {
+          output.innerHTML += `<span class="output">Commande inconnue: ${cmd}</span><br>`;
+        }
+
+        output.scrollTop = output.scrollHeight; 
       }
-      return "Aucun fichier ici.";
-    },
-    cat: (args) => {
-      if (!args[0]) return "Veuillez spécifier un fichier.";
-      if (args[0] === "cv.pdf" && currentDirectory === "CV") {
-        fetch(`${githubBaseURL}/cv.pdf`)
-          .then(response => response.text())
-          .then(text => {
-            output.innerHTML += `<pre class="output">${text}</pre><br>`;
-          })
-          .catch(() => {
-            output.innerHTML += `<span class="output">Erreur : Impossible d'afficher cv.pdf</span><br>`;
-          });
-        return "Affichage du contenu de cv.pdf...";
+
+      // Fonction d'auto-complétion
+      function autocomplete(input) {
+        const value = input.value.trim();
+        if (!value) return;
+
+        let suggestions = [...commandsList, ...directories, ...files].filter(item => item.startsWith(value));
+
+        if (suggestions.length === 1) {
+          input.value = suggestions[0] + " ";
+        } else if (suggestions.length > 1) {
+          output.innerHTML += `<span class="output">${suggestions.join("  ")}</span><br>`;
+        }
       }
-      return "Fichier non trouvé.";
-    },
-    wget: (args) => {
-      if (!args[0]) return "Veuillez spécifier un fichier.";
-      if (args[0] === "cv.pdf" && currentDirectory === "CV") {
-        window.location.href = `${githubBaseURL}/cv.pdf`;
-        return "Téléchargement de cv.pdf...";
-      }
-      return "Fichier non trouvé.";
-    },
-    cd: (args) => {
-      if (!args[0]) return "Veuillez spécifier un répertoire.";
-      if (directories.includes(args[0])) {
-        output.innerHTML += `<span class="output">Accès à '${args[0]}'...</span><br>`;
-        setTimeout(() => {
-          window.location.href = `${githubBaseURL}/${args[0]}/index.html`;
-        }, 1000);
-        return "";
-      }
-      return "Répertoire non trouvé.";
-    },
-    clear: () => {
-      output.innerHTML = "";
-      return "";
-    },
-    help: () => {
-      return `
-        <strong>Liste des commandes disponibles :</strong><br>
-        <span class="output">ls</span> - Affiche les fichiers et répertoires du répertoire courant.<br>
-        <span class="output">cd <i>répertoire</i></span> - Change de répertoire. Par exemple, 'cd projects'.<br>
-        <span class="output">cat <i>fichier</i></span> - Affiche le contenu d'un fichier texte. Exemple : 'cat cv.pdf'.<br>
-        <span class="output">wget <i>fichier</i></span> - Télécharge un fichier. Exemple : 'wget cv.pdf'.<br>
-        <span class="output">clear</span> - Efface l'écran du terminal.<br>
-        <span class="output">help</span> - Affiche cette aide avec la liste des commandes.<br>
-      `;
-    }
-  };
-
-  // Gestion des commandes
-  commandInput.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") {
-      const command = commandInput.value.trim();
-      commandInput.value = "";
-      output.innerHTML += `<span class="prompt">${prompt}</span><span class="command">${command}</span><br>`;
-      executeCommand(command);
-    }
-    if (e.key === "Tab") {
-      e.preventDefault();
-      autocomplete(commandInput);
-    }
-  });
-
-  function executeCommand(command) {
-    const args = command.split(" ");
-    const cmd = args[0];
-
-    if (commands[cmd]) {
-      const result = commands[cmd](args.slice(1));
-      if (result) output.innerHTML += `<span class="output">${result}</span><br>`;
-    } else {
-      output.innerHTML += `<span class="output">Commande inconnue: ${cmd}</span><br>`;
-    }
-
-    output.scrollTop = output.scrollHeight; 
-  }
-
-  // Fonction d'auto-complétion
-  function autocomplete(input) {
-    const value = input.value.trim();
-    if (!value) return;
-
-    let suggestions = [...commandsList, ...directories, ...files].filter(item => item.startsWith(value));
-
-    if (suggestions.length === 1) {
-      input.value = suggestions[0] + " ";
-    } else if (suggestions.length > 1) {
-      output.innerHTML += `<span class="output">${suggestions.join("  ")}</span><br>`;
-    }
-  }
-});
+    });
   </script>
 </body>
 </html>
