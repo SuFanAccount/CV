@@ -69,23 +69,78 @@
         width: 100%;
       }
     }
+
+    /* Animation du texte dans la console */
+    .console-output {
+      margin-top: 20px;
+    }
+
+    .console-output p {
+      margin: 0;
+      padding: 0;
+    }
+
+    .command-line {
+      display: flex;
+      align-items: center;
+      margin: 10px 0;
+    }
+
+    .prompt {
+      margin-right: 10px;
+    }
+
+    .typing-line {
+      display: inline-block;
+      width: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      animation: typing 2s steps(30) 1s forwards;
+    }
+
+    /* Animation du curseur clignotant */
+    @keyframes blink {
+      0% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
   </style>
 </head>
 <body>
   <div class="terminal">
-    <h1 id="title" class="typing" style="animation-delay: 0s;"></h1>
-    <p id="email" class="typing" style="animation-delay: 2s;"></p>
-    <p id="linkedin" class="typing" style="animation-delay: 4s;"></p>
+    <div class="console-output">
+      <div class="command-line">
+        <span class="prompt">$</span>
+        <span id="title" class="typing-line"></span>
+        <div class="cursor"></div>
+      </div>
+      <div class="command-line">
+        <span class="prompt">$</span>
+        <span id="email" class="typing-line"></span>
+        <div class="cursor"></div>
+      </div>
+      <div class="command-line">
+        <span class="prompt">$</span>
+        <span id="linkedin" class="typing-line"></span>
+        <div class="cursor"></div>
+      </div>
+    </div>
   </div>
 
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       const texts = [
         { id: "title", text: "Mes informations de contact", delay: 0 },
-        { id: "email", text: "Email: monemail@example.com", delay: 2000 },
-        { id: "linkedin", text: "LinkedIn: [lien LinkedIn]", delay: 4000 }
+        { id: "email", text: "Email: monemail@example.com", delay: 3000 },
+        { id: "linkedin", text: "LinkedIn: [lien LinkedIn]", delay: 6000 }
       ];
-      
+
       texts.forEach(({ id, text, delay }) => {
         setTimeout(() => {
           let el = document.getElementById(id);
