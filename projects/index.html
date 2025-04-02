@@ -1,130 +1,78 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projets</title>
-  <style>
-    /* Style général pour le terminal */
-    body {
-      background-color: black;
-      color: #00FF00; /* Texte vert */
-      font-family: 'Courier New', monospace;
-      margin: 0;
-      padding: 0;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projets & Réalisations</title>
+    <style>
+        body {
+            background-color: black;
+            color: #00FF00;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 0;
+        }
 
-    .terminal {
-      padding: 20px;
-      white-space: nowrap;
-      overflow-x: auto;
-      height: 100vh;
-      box-sizing: border-box;
-    }
+        .container {
+            padding: 20px;
+        }
 
-    .prompt {
-      color: #66FF00; /* Couleur de la commande dans le shell */
-    }
+        h1 {
+            text-align: center;
+        }
 
-    .command {
-      color: #00FFFF; /* Couleur des commandes entrées */
-    }
+        .command {
+            margin-bottom: 20px;
+        }
 
-    .project {
-      background-color: #333;
-      border: 1px solid #00FF00;
-      padding: 15px;
-      margin: 10px 0;
-      border-radius: 5px;
-    }
+        .command span {
+            color: #00FF00;
+        }
 
-    .project-title {
-      color: #FFD700; /* Couleur dorée pour le titre du projet */
-      font-size: 1.2em;
-      margin-bottom: 10px;
-    }
+        .project-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
 
-    .project-description {
-      color: #FFFFFF;
-    }
+        .project-list li {
+            margin-bottom: 10px;
+        }
 
-    .project-link {
-      color: #00FFFF;
-      text-decoration: none;
-      font-weight: bold;
-    }
+        .project-list a {
+            color: #00FF00;
+            text-decoration: none;
+        }
 
-    .project-link:hover {
-      text-decoration: underline;
-    }
+        .project-list a:hover {
+            text-decoration: underline;
+        }
 
-    .typing {
-      display: inline-block;
-      width: 0;
-      white-space: nowrap;
-      overflow: hidden;
-      animation: typing 2s steps(40) 1s forwards;
-    }
-
-    @keyframes typing {
-      to {
-        width: 100%;
-      }
-    }
-  </style>
+        .footer {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            font-size: 12px;
+        }
+    </style>
 </head>
 <body>
-  <div class="terminal">
-    <ul>
-      <li class="prompt">user@github:~$ <span class="command">cd projects</span></li>
-      <li class="prompt">user@github:~/projects$ <span class="command">ls</span></li>
+    <div class="container">
+        <h1>Projets & Réalisations</h1>
 
-      <!-- Projets affichés avec un effet de typographie -->
-      <li class="typing project" id="proj1"></li>
-      <li class="typing project" id="proj2"></li>
-    </ul>
+        <div class="command">
+            <span>$ ls /projects</span>
+        </div>
+        
+        <ul class="project-list">
+            <li><span>$ </span><a href="#project1">Projet 1 - Description du projet</a></li>
+            <li><span>$ </span><a href="#project2">Projet 2 - Description du projet</a></li>
+            <li><span>$ </span><a href="#project3">Projet 3 - Description du projet</a></li>
+            <li><span>$ </span><a href="#project4">Projet 4 - Description du projet</a></li>
+        </ul>
 
-    <!-- Blocs de projets plus structurés -->
-    <div class="project">
-      <div class="project-title">Projet 1: Outil de surveillance réseau</div>
-      <div class="project-description">
-        Un outil développé pour surveiller et analyser le trafic réseau en temps réel, avec une interface web sécurisée.
-        <br />
-        <a href="https://github.com/username/project1" class="project-link" target="_blank">Voir le projet sur GitHub</a>
-      </div>
+        <div class="footer">
+            <span>last login: Tue Apr 02 2025</span>
+        </div>
     </div>
-    <div class="project">
-      <div class="project-title">Projet 2: Application web sécurisée</div>
-      <div class="project-description">
-        Application web permettant la gestion d'une base de données, avec des fonctionnalités de sécurité avancées telles que l'authentification multi-facteurs.
-        <br />
-        <a href="https://github.com/username/project2" class="project-link" target="_blank">Voir le projet sur GitHub</a>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      const texts = [
-        { id: "proj1", text: "Projet 1: Outil de surveillance réseau" },
-        { id: "proj2", text: "Projet 2: Application web sécurisée" }
-      ];
-
-      texts.forEach(({ id, text }, index) => {
-        setTimeout(() => {
-          let el = document.getElementById(id);
-          let i = 0;
-          function type() {
-            if (i < text.length) {
-              el.textContent += text.charAt(i);
-              i++;
-              setTimeout(type, 50);
-            }
-          }
-          type();
-        }, index * 4000); // Décale l'affichage de chaque projet
-      });
-    });
-  </script>
 </body>
 </html>
