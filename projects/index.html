@@ -3,110 +3,69 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projects</title>
+  <title>Projets</title>
   <style>
     /* Style général pour le terminal */
-body {
-  background-color: black;
-  color: #00FF00; /* Texte vert */
-  font-family: 'Courier New', monospace;
-  font-size: 18px;
-  margin: 0;
-  padding: 0;
-}
+    body {
+      background-color: black;
+      color: #00FF00; /* Texte vert */
+      font-family: 'Courier New', monospace;
+      margin: 0;
+      padding: 0;
+    }
 
-.terminal {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 20px;
-}
+    .terminal {
+      padding: 20px;
+    }
 
-pre {
-  margin: 0;
-}
+    ul {
+      list-style: none;
+      padding: 0;
+    }
 
-#output {
-  white-space: pre-wrap;
-  word-wrap: break-word;
-  max-width: 100%;
-}
+    li {
+      margin: 10px 0;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
 
-.intro-text {
-  font-style: italic;
-}
+    .typing {
+      display: inline-block;
+      width: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      animation: typing 2s steps(30) 1s forwards, blink 0.8s infinite step-end;
+    }
 
-.command {
-  color: #00FF00;
-}
+    @keyframes typing {
+      to {
+        width: 100%;
+      }
+    }
 
-.prompt {
-  color: #00FF00;
-  font-weight: bold;
-}
-
-.output {
-  color: #00FF00;
-}
-
-#command {
-  background: transparent;
-  border: none;
-  color: #00FF00;
-  outline: none;
-  font-family: 'Courier New', monospace;
-  font-size: 18px;
-}
-
-.cursor {
-  display: inline-block;
-  width: 10px;
-  height: 1.5em;
-  background-color: #00FF00;
-  animation: blink 0.8s infinite;
-}
-
-@keyframes blink {
-  50% {
-    opacity: 0;
-  }
-}
-
-/* Animation d'écriture pour chaque ligne */
-.typing {
-  display: inline-block;
-  width: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  animation: typing 2s steps(30) 1s forwards, blink 0.8s infinite step-end;
-}
-
-@keyframes typing {
-  to {
-    width: 100%;
-  }
-}
+    @keyframes blink {
+      50% {
+        opacity: 0;
+      }
+    }
   </style>
 </head>
 <body>
   <div class="terminal">
-    <h1 id="title" style="animation-delay: 0s;"></h1>
     <ul>
-      <li id="proj1" style="animation-delay: 2s;"></li>
-      <li id="proj2" style="animation-delay: 4s;"></li>
-      <!-- Ajoute ici tes projets -->
+      <li id="proj1" class="typing"></li>
+      <li id="proj2" class="typing"></li>
     </ul>
   </div>
 
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       const texts = [
-        { id: "title", text: "Projets réalisés", delay: 0 },
-        { id: "proj1", text: "Projet 1: Description du projet", delay: 2000 },
-        { id: "proj2", text: "Projet 2: Description du projet", delay: 4000 }
+        { id: "proj1", text: "Projet 1: Description du projet" },
+        { id: "proj2", text: "Projet 2: Description du projet" }
       ];
-      
-      texts.forEach(({ id, text, delay }) => {
+
+      texts.forEach(({ id, text }, index) => {
         setTimeout(() => {
           let el = document.getElementById(id);
           let i = 0;
@@ -118,7 +77,7 @@ pre {
             }
           }
           type();
-        }, delay);
+        }, index * 4000); // Décale l'affichage de chaque projet
       });
     });
   </script>
