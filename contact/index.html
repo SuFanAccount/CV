@@ -55,19 +55,13 @@
       animation: blink 0.8s infinite;
     }
 
-    @keyframes blink {
-      50% {
-        opacity: 0;
-      }
-    }
-
     /* Animation d'écriture */
     .typing {
       display: inline-block;
       width: 0;
       white-space: nowrap;
       overflow: hidden;
-      animation: typing 2s steps(30) 1s forwards, blink 0.8s infinite step-end;
+      animation: typing 2s steps(30) 1s forwards;
     }
 
     @keyframes typing {
