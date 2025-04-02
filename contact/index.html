@@ -6,58 +6,90 @@
     <title>Contact - Mon CV</title>
     <style>
         body {
-            background-color: black;
-            color: green;
-            font-family: monospace;
+            background-color: #000;
+            color: #00ff00;
+            font-family: monospace, monospace;
             margin: 0;
             padding: 0;
         }
+
         h1, h2 {
             margin: 20px;
         }
+
         .container {
             padding: 20px;
+            font-size: 18px;
         }
+
         .command {
-            margin: 5px;
+            margin: 5px 0;
             padding-left: 20px;
         }
+
         a {
-            color: green;
+            color: #00ff00;
             text-decoration: none;
+            font-weight: bold;
         }
+
+        a:hover {
+            color: #66ff66;
+        }
+
+        .section-header {
+            color: #00cc00;
+        }
+
         .command:hover {
-            color: lightgreen;
+            color: #66ff66;
+        }
+
+        .output {
+            margin-left: 20px;
+        }
+
+        /* Adding a blinking effect to simulate terminal cursor */
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 20px;
+            background-color: #00ff00;
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                background-color: transparent;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Contact</h1>
-        <h2>root/contact</h2>
+        <h2 class="section-header">root/contact</h2>
         <div class="command">
             <p>$ cat contact_info.txt</p>
-            <ul>
-                <li>
-                    <p>$ <span style="color: lightgreen;">Social Media</span>:</p>
-                    <ul>
-                        <li><p>$ <a href="https://www.instagram.com/tonprofil" target="_blank">@tonprofil (Instagram)</a></p></li>
-                        <li><p>$ <a href="https://www.linkedin.com/in/tonprofil" target="_blank">@tonprofil (LinkedIn)</a></p></li>
-                    </ul>
-                </li>
-                <li>
-                    <p>$ <span style="color: lightgreen;">Phone</span>:</p>
-                    <p>$ +32 123 456 789</p>
-                </li>
-                <li>
-                    <p>$ <span style="color: lightgreen;">Email</span>:</p>
-                    <p>$ <a href="mailto:tonemail@example.com">tonemail@example.com</a></p>
-                </li>
-                <li>
-                    <p>$ <span style="color: lightgreen;">GitHub</span>:</p>
-                    <p>$ <a href="https://github.com/tonprofil" target="_blank">https://github.com/tonprofil</a></p>
-                </li>
-            </ul>
+            <div class="output">
+                <p><span class="section-header">Social Media:</span></p>
+                <ul>
+                    <li><p>$ <a href="https://www.instagram.com/tonprofil" target="_blank">@tonprofil (Instagram)</a></p></li>
+                    <li><p>$ <a href="https://www.linkedin.com/in/tonprofil" target="_blank">@tonprofil (LinkedIn)</a></p></li>
+                    <li><p>$ <a href="https://twitter.com/tonprofil" target="_blank">@tonprofil (Twitter)</a></p></li>
+                </ul>
+
+                <p><span class="section-header">Phone:</span></p>
+                <p>$ +32 123 456 789</p>
+
+                <p><span class="section-header">Email:</span></p>
+                <p>$ <a href="mailto:tonemail@example.com">tonemail@example.com</a></p>
+
+                <p><span class="section-header">GitHub:</span></p>
+                <p>$ <a href="https://github.com/tonprofil" target="_blank">https://github.com/tonprofil</a></p>
+            </div>
+            <p class="command">[Press <span style="color: #ff0000;">ENTER</span> to return]</p>
+            <div class="cursor"></div>
         </div>
     </div>
 </body>
