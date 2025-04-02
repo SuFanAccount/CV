@@ -4,11 +4,64 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background-color: black;
+      color: lime;
+      font-family: monospace;
+      padding: 20px;
+    }
+    .terminal {
+      white-space: pre;
+      overflow: hidden;
+    }
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+    .typing-effect {
+      display: inline-block;
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 2px solid lime;
+      width: 0;
+      animation: typing 2s steps(30, end) forwards, blink 0.8s infinite;
+    }
+  </style>
 </head>
 <body>
-  <h1>Mes informations de contact</h1>
-  <p>Email: monemail@example.com</p>
-  <p>LinkedIn: [lien LinkedIn]</p>
+  <div class="terminal">
+    <h1 id="title" class="typing-effect" style="animation-delay: 0s;"></h1>
+    <p id="email" class="typing-effect" style="animation-delay: 2s;"></p>
+    <p id="linkedin" class="typing-effect" style="animation-delay: 4s;"></p>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const texts = [
+        { id: "title", text: "Mes informations de contact", delay: 0 },
+        { id: "email", text: "Email: monemail@example.com", delay: 2000 },
+        { id: "linkedin", text: "LinkedIn: [lien LinkedIn]", delay: 4000 }
+      ];
+      
+      texts.forEach(({ id, text, delay }) => {
+        setTimeout(() => {
+          let el = document.getElementById(id);
+          let i = 0;
+          function type() {
+            if (i < text.length) {
+              el.textContent += text.charAt(i);
+              i++;
+              setTimeout(type, 50);
+            }
+          }
+          type();
+        }, delay);
+      });
+    });
+  </script>
 </body>
 </html>
