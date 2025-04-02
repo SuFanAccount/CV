@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
 Type 'help', it will probably help you\n\n
 Hope you did used kali before : \n`;
 
-  output.innerHTML = `<span class="intro-text">${introText}</span>`;
+  output.innerHTML = `<span class="typing intro-text">${introText}</span>`;
 
   let prompt = "CV@guest:~# "; 
 
