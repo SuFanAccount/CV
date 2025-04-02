@@ -1,174 +1,64 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact - Terminal View</title>
-  <style>
-    /* Style général pour le terminal */
-    body {
-      background-color: black;
-      color: #00FF00; /* Texte vert */
-      font-family: 'Courier New', monospace;
-      font-size: 18px;
-      margin: 0;
-      padding: 0;
-    }
-
-    .terminal {
-      padding: 20px;
-    }
-
-    pre {
-      margin: 0;
-    }
-
-    .command {
-      color: #00FF00;
-    }
-
-    .prompt {
-      color: #00FF00;
-      font-weight: bold;
-    }
-
-    .terminal-content {
-      margin-top: 20px;
-      padding-left: 20px;
-    }
-
-    .terminal-content p {
-      margin: 10px 0;
-    }
-
-    .terminal-content a {
-      color: #00FF00;
-      text-decoration: none;
-    }
-
-    .terminal-content a:hover {
-      text-decoration: underline;
-    }
-
-    .command-line {
-      display: flex;
-      align-items: center;
-      margin: 10px 0;
-    }
-
-    .prompt {
-      margin-right: 10px;
-    }
-
-    .cursor {
-      display: inline-block;
-      width: 10px;
-      height: 1.5em;
-      background-color: #00FF00;
-      animation: blink 0.8s infinite;
-    }
-
-    @keyframes blink {
-      0% {
-        opacity: 1;
-      }
-      50% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 1;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Mon CV</title>
+    <style>
+        body {
+            background-color: black;
+            color: green;
+            font-family: monospace;
+            margin: 0;
+            padding: 0;
+        }
+        h1, h2 {
+            margin: 20px;
+        }
+        .container {
+            padding: 20px;
+        }
+        .command {
+            margin: 5px;
+            padding-left: 20px;
+        }
+        a {
+            color: green;
+            text-decoration: none;
+        }
+        .command:hover {
+            color: lightgreen;
+        }
+    </style>
 </head>
 <body>
-  <div class="terminal">
-    <div class="command-line">
-      <span class="prompt">$</span>
-      <span id="title">Bienvenue dans mon terminal</span>
-      <div class="cursor"></div>
+    <div class="container">
+        <h1>Contact</h1>
+        <h2>root/contact</h2>
+        <div class="command">
+            <p>$ cat contact_info.txt</p>
+            <ul>
+                <li>
+                    <p>$ <span style="color: lightgreen;">Social Media</span>:</p>
+                    <ul>
+                        <li><p>$ <a href="https://www.instagram.com/tonprofil" target="_blank">@tonprofil (Instagram)</a></p></li>
+                        <li><p>$ <a href="https://www.linkedin.com/in/tonprofil" target="_blank">@tonprofil (LinkedIn)</a></p></li>
+                    </ul>
+                </li>
+                <li>
+                    <p>$ <span style="color: lightgreen;">Phone</span>:</p>
+                    <p>$ +32 123 456 789</p>
+                </li>
+                <li>
+                    <p>$ <span style="color: lightgreen;">Email</span>:</p>
+                    <p>$ <a href="mailto:tonemail@example.com">tonemail@example.com</a></p>
+                </li>
+                <li>
+                    <p>$ <span style="color: lightgreen;">GitHub</span>:</p>
+                    <p>$ <a href="https://github.com/tonprofil" target="_blank">https://github.com/tonprofil</a></p>
+                </li>
+            </ul>
+        </div>
     </div>
-
-    <div class="terminal-content">
-      <div class="command-line">
-        <span class="prompt">$</span>
-        <span id="info">Affichage des informations de contact :</span>
-        <div class="cursor"></div>
-      </div>
-
-      <div class="command-line">
-        <span class="prompt">$</span>
-        <span id="email">Email: <a href="mailto:monemail@example.com">monemail@example.com</a></span>
-        <div class="cursor"></div>
-      </div>
-
-      <div class="command-line">
-        <span class="prompt">$</span>
-        <span id="linkedin">LinkedIn: <a href="https://www.linkedin.com/in/monprofil" target="_blank">https://www.linkedin.com/in/monprofil</a></span>
-        <div class="cursor"></div>
-      </div>
-
-      <div class="command-line">
-        <span class="prompt">$</span>
-        <span id="github">GitHub: <a href="https://github.com/monprofil" target="_blank">https://github.com/monprofil</a></span>
-        <div class="cursor"></div>
-      </div>
-
-      <div class="command-line">
-        <span class="prompt">$</span>
-        <span id="about">A propos de moi : Je suis passionné par la cybersécurité et le développement.</span>
-        <div class="cursor"></div>
-      </div>
-
-      <div class="command-line">
-        <span class="prompt">$</span>
-        <span id="skills">Compétences : Analyse SOC, pentesting, Python, réseaux, Linux</span>
-        <div class="cursor"></div>
-      </div>
-
-      <div class="command-line">
-        <span class="prompt">$</span>
-        <span id="location">Localisation : Bruxelles, Belgique</span>
-        <div class="cursor"></div>
-      </div>
-
-      <div class="command-line">
-        <span class="prompt">$</span>
-        <span id="closing">N'hésitez pas à me contacter pour plus d'infos !</span>
-        <div class="cursor"></div>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      const texts = [
-        { id: "title", text: "Bienvenue dans mon terminal", delay: 0 },
-        { id: "info", text: "Affichage des informations de contact :", delay: 2000 },
-        { id: "email", text: "Email: monemail@example.com", delay: 4000 },
-        { id: "linkedin", text: "LinkedIn: https://www.linkedin.com/in/monprofil", delay: 6000 },
-        { id: "github", text: "GitHub: https://github.com/monprofil", delay: 8000 },
-        { id: "about", text: "A propos de moi : Je suis passionné par la cybersécurité et le développement.", delay: 10000 },
-        { id: "skills", text: "Compétences : Analyse SOC, pentesting, Python, réseaux, Linux", delay: 12000 },
-        { id: "location", text: "Localisation : Bruxelles, Belgique", delay: 14000 },
-        { id: "closing", text: "N'hésitez pas à me contacter pour plus d'infos !", delay: 16000 }
-      ];
-
-      texts.forEach(({ id, text, delay }) => {
-        setTimeout(() => {
-          let el = document.getElementById(id);
-          let i = 0;
-          function type() {
-            if (i < text.length) {
-              el.textContent += text.charAt(i);
-              i++;
-              setTimeout(type, 50);
-            }
-          }
-          type();
-        }, delay);
-      });
-    });
-  </script>
 </body>
 </html>
