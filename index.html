@@ -88,12 +88,12 @@ pre {
 
       // Variables d'état
       let currentDirectory = "CV"; 
-      const files = ["cv.pdf", "motivation_letter.txt"];
+      const files = ["cv.pdf", "cover.txt"];
       const directories = ["projects", "contact"]; 
       const commandsList = ["ls", "cd", "cat", "wget", "clear", "help"];
 
       // Introduction avant le shell
-      const introText = `Welcome guest\n\nType 'help', it will probably help you\n\nHope you did used kali before : \n\n`;
+      const introText = `Welcome guest\n\nType 'help', it will probably help you\n\nHope you have used kali before : \n\n`;
       let index = 0;
 
       function typeWriter() {
@@ -120,16 +120,16 @@ pre {
         },
         cat: (args) => {
           if (!args[0]) return "Veuillez spécifier un fichier.";
-          if (args[0] === "motivation_letter.txt" && currentDirectory === "CV") {
-            fetch(`${githubBaseURL}/motivation_letter.txt`)
+          if (args[0] === "cover.txt" && currentDirectory === "CV") {
+            fetch(`${githubBaseURL}/cover.txt`)
               .then(response => response.text())
               .then(text => {
                 output.innerHTML += `<pre class="output">${text}</pre><br>`;
               })
               .catch(() => {
-                output.innerHTML += `<span class="output">Erreur : Impossible d'afficher motivation_letter.txt</span><br>`;
+                output.innerHTML += `<span class="output">Erreur : Impossible d'afficher cover.txt</span><br>`;
               });
-            return "Affichage du contenu de motivation_letter.txt...";
+            return "Affichage du contenu de cover.txt...";
           }
           if (args[0] === "cv.pdf" && currentDirectory === "CV") {
             fetch(`${githubBaseURL}/cv.pdf`)
