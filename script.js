@@ -17,7 +17,7 @@ Type 'help', it will probably help you\n\n
 Hope you did used kali before : \n`;
 
   // Appliquer l'animation de texte pour l'intro
-  output.innerHTML = `<span class="typing intro-text">${introText}</span>`;
+  output.innerHTML = `<span class="typing">${introText}</span>`;
 
   let prompt = "CV@guest:~# "; 
 
