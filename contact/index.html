@@ -6,93 +6,82 @@
   <title>Contact</title>
   <style>
     /* Style général pour le terminal */
-body {
-  background-color: black;
-  color: #00FF00; /* Texte vert */
-  font-family: 'Courier New', monospace;
-  font-size: 18px;
-  margin: 0;
-  padding: 0;
-}
+    body {
+      background-color: black;
+      color: #00FF00; /* Texte vert */
+      font-family: 'Courier New', monospace;
+      font-size: 18px;
+      margin: 0;
+      padding: 0;
+    }
 
-.terminal {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 20px;
-}
+    .terminal {
+      padding: 20px;
+    }
 
-pre {
-  margin: 0;
-}
+    pre {
+      margin: 0;
+    }
 
-#output {
-  white-space: pre-wrap;
-  word-wrap: break-word;
-  max-width: 100%;
-}
+    #output {
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      max-width: 100%;
+    }
 
-.intro-text {
-  font-style: italic;
-}
+    .command {
+      color: #00FF00;
+    }
 
-.command {
-  color: #00FF00;
-}
+    .prompt {
+      color: #00FF00;
+      font-weight: bold;
+    }
 
-.prompt {
-  color: #00FF00;
-  font-weight: bold;
-}
+    #command {
+      background: transparent;
+      border: none;
+      color: #00FF00;
+      outline: none;
+      font-family: 'Courier New', monospace;
+      font-size: 18px;
+    }
 
-.output {
-  color: #00FF00;
-}
+    .cursor {
+      display: inline-block;
+      width: 10px;
+      height: 1.5em;
+      background-color: #00FF00;
+      animation: blink 0.8s infinite;
+    }
 
-#command {
-  background: transparent;
-  border: none;
-  color: #00FF00;
-  outline: none;
-  font-family: 'Courier New', monospace;
-  font-size: 18px;
-}
+    @keyframes blink {
+      50% {
+        opacity: 0;
+      }
+    }
 
-.cursor {
-  display: inline-block;
-  width: 10px;
-  height: 1.5em;
-  background-color: #00FF00;
-  animation: blink 0.8s infinite;
-}
+    /* Animation d'écriture */
+    .typing {
+      display: inline-block;
+      width: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      animation: typing 2s steps(30) 1s forwards, blink 0.8s infinite step-end;
+    }
 
-@keyframes blink {
-  50% {
-    opacity: 0;
-  }
-}
-
-/* Animation d'écriture pour chaque ligne */
-.typing {
-  display: inline-block;
-  width: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  animation: typing 2s steps(30) 1s forwards, blink 0.8s infinite step-end;
-}
-
-@keyframes typing {
-  to {
-    width: 100%;
-  }
-}
+    @keyframes typing {
+      to {
+        width: 100%;
+      }
+    }
   </style>
 </head>
 <body>
   <div class="terminal">
-    <h1 id="title" style="animation-delay: 0s;"></h1>
-    <p id="email" style="animation-delay: 2s;"></p>
-    <p id="linkedin" style="animation-delay: 4s;"></p>
+    <h1 id="title" class="typing" style="animation-delay: 0s;"></h1>
+    <p id="email" class="typing" style="animation-delay: 2s;"></p>
+    <p id="linkedin" class="typing" style="animation-delay: 4s;"></p>
   </div>
 
   <script>
