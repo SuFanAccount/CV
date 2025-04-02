@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact</title>
+  <title>Contact - Terminal View</title>
   <style>
     /* Style général pour le terminal */
     body {
@@ -23,12 +23,6 @@
       margin: 0;
     }
 
-    #output {
-      white-space: pre-wrap;
-      word-wrap: break-word;
-      max-width: 100%;
-    }
-
     .command {
       color: #00FF00;
     }
@@ -38,46 +32,22 @@
       font-weight: bold;
     }
 
-    #command {
-      background: transparent;
-      border: none;
-      color: #00FF00;
-      outline: none;
-      font-family: 'Courier New', monospace;
-      font-size: 18px;
-    }
-
-    .cursor {
-      display: inline-block;
-      width: 10px;
-      height: 1.5em;
-      background-color: #00FF00;
-      animation: blink 0.8s infinite;
-    }
-
-    /* Animation d'écriture */
-    .typing {
-      display: inline-block;
-      width: 0;
-      white-space: nowrap;
-      overflow: hidden;
-      animation: typing 2s steps(30) 1s forwards;
-    }
-
-    @keyframes typing {
-      to {
-        width: 100%;
-      }
-    }
-
-    /* Animation du texte dans la console */
-    .console-output {
+    .terminal-content {
       margin-top: 20px;
+      padding-left: 20px;
     }
 
-    .console-output p {
-      margin: 0;
-      padding: 0;
+    .terminal-content p {
+      margin: 10px 0;
+    }
+
+    .terminal-content a {
+      color: #00FF00;
+      text-decoration: none;
+    }
+
+    .terminal-content a:hover {
+      text-decoration: underline;
     }
 
     .command-line {
@@ -90,15 +60,14 @@
       margin-right: 10px;
     }
 
-    .typing-line {
+    .cursor {
       display: inline-block;
-      width: 0;
-      white-space: nowrap;
-      overflow: hidden;
-      animation: typing 2s steps(30) 1s forwards;
+      width: 10px;
+      height: 1.5em;
+      background-color: #00FF00;
+      animation: blink 0.8s infinite;
     }
 
-    /* Animation du curseur clignotant */
     @keyframes blink {
       0% {
         opacity: 1;
@@ -114,20 +83,58 @@
 </head>
 <body>
   <div class="terminal">
-    <div class="console-output">
+    <div class="command-line">
+      <span class="prompt">$</span>
+      <span id="title">Bienvenue dans mon terminal</span>
+      <div class="cursor"></div>
+    </div>
+
+    <div class="terminal-content">
       <div class="command-line">
         <span class="prompt">$</span>
-        <span id="title" class="typing-line"></span>
+        <span id="info">Affichage des informations de contact :</span>
         <div class="cursor"></div>
       </div>
+
       <div class="command-line">
         <span class="prompt">$</span>
-        <span id="email" class="typing-line"></span>
+        <span id="email">Email: <a href="mailto:monemail@example.com">monemail@example.com</a></span>
         <div class="cursor"></div>
       </div>
+
       <div class="command-line">
         <span class="prompt">$</span>
-        <span id="linkedin" class="typing-line"></span>
+        <span id="linkedin">LinkedIn: <a href="https://www.linkedin.com/in/monprofil" target="_blank">https://www.linkedin.com/in/monprofil</a></span>
+        <div class="cursor"></div>
+      </div>
+
+      <div class="command-line">
+        <span class="prompt">$</span>
+        <span id="github">GitHub: <a href="https://github.com/monprofil" target="_blank">https://github.com/monprofil</a></span>
+        <div class="cursor"></div>
+      </div>
+
+      <div class="command-line">
+        <span class="prompt">$</span>
+        <span id="about">A propos de moi : Je suis passionné par la cybersécurité et le développement.</span>
+        <div class="cursor"></div>
+      </div>
+
+      <div class="command-line">
+        <span class="prompt">$</span>
+        <span id="skills">Compétences : Analyse SOC, pentesting, Python, réseaux, Linux</span>
+        <div class="cursor"></div>
+      </div>
+
+      <div class="command-line">
+        <span class="prompt">$</span>
+        <span id="location">Localisation : Bruxelles, Belgique</span>
+        <div class="cursor"></div>
+      </div>
+
+      <div class="command-line">
+        <span class="prompt">$</span>
+        <span id="closing">N'hésitez pas à me contacter pour plus d'infos !</span>
         <div class="cursor"></div>
       </div>
     </div>
@@ -136,9 +143,15 @@
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       const texts = [
-        { id: "title", text: "Mes informations de contact", delay: 0 },
-        { id: "email", text: "Email: monemail@example.com", delay: 3000 },
-        { id: "linkedin", text: "LinkedIn: [lien LinkedIn]", delay: 6000 }
+        { id: "title", text: "Bienvenue dans mon terminal", delay: 0 },
+        { id: "info", text: "Affichage des informations de contact :", delay: 2000 },
+        { id: "email", text: "Email: monemail@example.com", delay: 4000 },
+        { id: "linkedin", text: "LinkedIn: https://www.linkedin.com/in/monprofil", delay: 6000 },
+        { id: "github", text: "GitHub: https://github.com/monprofil", delay: 8000 },
+        { id: "about", text: "A propos de moi : Je suis passionné par la cybersécurité et le développement.", delay: 10000 },
+        { id: "skills", text: "Compétences : Analyse SOC, pentesting, Python, réseaux, Linux", delay: 12000 },
+        { id: "location", text: "Localisation : Bruxelles, Belgique", delay: 14000 },
+        { id: "closing", text: "N'hésitez pas à me contacter pour plus d'infos !", delay: 16000 }
       ];
 
       texts.forEach(({ id, text, delay }) => {
