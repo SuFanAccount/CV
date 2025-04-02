@@ -104,7 +104,7 @@ pre {
 
       // Variables d'état
       let currentDirectory = "CV"; 
-      const files = ["cv.pdf"];
+      const files = ["cv.pdf", "motivation_letter.txt];
       const directories = ["projects", "contact"]; 
       const commandsList = ["ls", "cd", "cat", "wget", "clear", "help"];
 
@@ -127,6 +127,17 @@ Hope you did used kali before : \n\n`;
         },
         cat: (args) => {
           if (!args[0]) return "Veuillez spécifier un fichier.";
+          if (args[0] === "motivation_letter.txt" && currentDirectory === "CV") {
+            fetch(`${githubBaseURL}/motivation_letter.txt`)
+              .then(response => response.text())
+              .then(text => {
+                output.innerHTML += `<pre class="output">${text}</pre><br>`;
+              })
+              .catch(() => {
+                output.innerHTML += `<span class="output">Erreur : Impossible d'afficher motivation_letter.txt</span><br>`;
+              });
+            return "Affichage du contenu de motivation_letter.txt...";
+          }
           if (args[0] === "cv.pdf" && currentDirectory === "CV") {
             fetch(`${githubBaseURL}/cv.pdf`)
               .then(response => response.text())
