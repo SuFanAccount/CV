@@ -35,7 +35,9 @@
         }
 
         .project-list li {
-            margin-bottom: 10px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #00FF00;
+            padding-bottom: 10px;
         }
 
         .project-list a {
@@ -45,6 +47,17 @@
 
         .project-list a:hover {
             text-decoration: underline;
+        }
+
+        .project-item {
+            margin-bottom: 15px;
+        }
+
+        .project-item img {
+            max-width: 100%;
+            height: auto;
+            border: 2px solid #00FF00;
+            margin-top: 10px;
         }
 
         .footer {
@@ -64,10 +77,34 @@
         </div>
         
         <ul class="project-list">
-            <li><span>$ </span><a href="#project1">Projet 1 - Description du projet</a></li>
-            <li><span>$ </span><a href="#project2">Projet 2 - Description du projet</a></li>
-            <li><span>$ </span><a href="#project3">Projet 3 - Description du projet</a></li>
-            <li><span>$ </span><a href="#project4">Projet 4 - Description du projet</a></li>
+            <li>
+                <div class="project-item">
+                    <h2>Projet 1</h2>
+                    <p>Description du projet 1. Ce projet consiste en...</p>
+                    <img src="images/projet1.jpg" alt="Image du projet 1">
+                </div>
+            </li>
+            <li>
+                <div class="project-item">
+                    <h2>Projet 2</h2>
+                    <p>Description du projet 2. Ce projet a pour but de...</p>
+                    <img src="images/projet2.jpg" alt="Image du projet 2">
+                </div>
+            </li>
+            <li>
+                <div class="project-item">
+                    <h2>Projet 3</h2>
+                    <p>Description du projet 3. Il est axé sur...</p>
+                    <img src="images/projet3.jpg" alt="Image du projet 3">
+                </div>
+            </li>
+            <li>
+                <div class="project-item">
+                    <h2>Projet 4</h2>
+                    <p>Description du projet 4. Ce projet est dédié à...</p>
+                    <img src="images/projet4.jpg" alt="Image du projet 4">
+                </div>
+            </li>
         </ul>
 
         <div class="footer">
