@@ -1,81 +1,93 @@
-/* Style général pour le terminal */
+/* Style général du site */
 body {
   background-color: black;
-  color: #00FF00; /* Texte vert */
-  font-family: 'Courier New', monospace;
-  font-size: 18px;
+  color: #00FF00; /* Texte vert comme dans un shell Kali */
+  font-family: 'Courier New', Courier, monospace;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Courier New', Courier, monospace;
+  color: #00FF00;
   margin: 0;
   padding: 0;
 }
 
-.terminal {
+/* Conteneur principal */
+.container {
+  width: 100%;
+  height: 100vh;
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
-  align-items: flex-start;
-  padding: 20px;
+  text-align: center;
 }
 
-pre {
-  margin: 0;
+/* Effet de texte tapé pour le message d'intro */
+@keyframes typing {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
 }
 
-#output {
-  white-space: pre-wrap;
-  word-wrap: break-word;
-  max-width: 100%;
-}
-
-.intro-text {
-  font-style: italic;
-}
-
-.command {
-  color: #00FF00;
-}
-
-.prompt {
-  color: #00FF00;
-  font-weight: bold;
-}
-
-.output {
-  color: #00FF00;
-}
-
-#command {
-  background: transparent;
-  border: none;
-  color: #00FF00;
-  outline: none;
-  font-family: 'Courier New', monospace;
-  font-size: 18px;
-}
-
-.cursor {
-  display: inline-block;
-  width: 10px;
-  height: 1.5em;
-  background-color: #00FF00;
-  animation: blink 0.8s infinite;
+#intro-message {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 0;
+  border-right: 0.15em solid #00FF00; /* Curseur du terminal */
+  animation: typing 3s steps(40) 1s forwards, blink 0.75s step-end infinite;
 }
 
 @keyframes blink {
   50% {
-    opacity: 0;
+    border-color: transparent;
   }
 }
 
-/* Animation d'écriture pour chaque ligne */
-.typing {
-  display: inline-block;
-  width: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  animation: typing 2s steps(30) 1s forwards, blink 0.8s step-end infinite;
+/* Liens */
+a {
+  color: #00FF00;
+  text-decoration: none;
+  transition: color 0.3s;
 }
 
-@keyframes typing {
-  to {
-    width: 100%;
-  }
+a:hover {
+  color: #FF0000; /* Change le couleur en rouge au survol */
+}
+
+/* Styles de la page 'root' */
+#root {
+  margin: 20px;
+}
+
+#root h1 {
+  font-size: 3em;
+}
+
+#root p {
+  font-size: 1.2em;
+}
+
+/* Styles de la page 'projects' */
+#projects {
+  margin: 20px;
+}
+
+#projects h2 {
+  font-size: 2.5em;
+}
+
+/* Styles de la page 'contact' */
+#contact {
+  margin: 20px;
+}
+
+#contact h2 {
+  font-size: 2.5em;
 }
