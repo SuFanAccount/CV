@@ -4,7 +4,47 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mon CV</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background-color: #0a0a0a;
+      color: #00ff00;
+      font-family: "Courier New", Courier, monospace;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    .terminal {
+      width: 100%;
+      height: 100vh;
+      padding: 10px;
+      box-sizing: border-box;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+    .output {
+      color: #00ff00;
+      font-size: 1.2em;
+    }
+    .intro-message {
+      font-size: 1.5em;
+      color: #00ff00;
+      display: inline;
+      animation: typing 3s steps(30) 1s 1 normal both, blink 0.75s step-end infinite;
+    }
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+    .prompt {
+      color: #00ff00;
+    }
+    .command {
+      color: #00ff00;
+    }
+  </style>
 </head>
 <body>
   <div class="terminal">
