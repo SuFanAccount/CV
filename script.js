@@ -12,13 +12,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const commandsList = ["ls", "cd", "cat", "wget", "clear", "help"];
 
   // Introduction avant le shell
-  const introText = `Bienvenue sur mon CV interactif en ligne !\n\n
-Tapez 'ls' pour voir les fichiers disponibles.\n
-Tapez 'cd projects' pour voir mes projets.\n
-Tapez 'cat cv.pdf' pour afficher mon CV directement.\n
-Tapez 'wget cv.pdf' pour télécharger mon CV.\n
-Tapez 'help' pour voir la liste des commandes.\n\n
-Prêt à commencer ? Tapez une commande...\n`;
+  const introText = `Welcome guest\n\n
+Type 'help', it will probably help you\n\n
+Hope you did used kali before : \n`;
 
   output.innerHTML = `<span class="intro-text">${introText}</span>`;
 
