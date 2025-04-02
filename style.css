@@ -1,75 +1,81 @@
+/* Style général pour le terminal */
 body {
   background-color: black;
-  color: #00FF00;
-  font-family: "Courier New", Courier, monospace;
+  color: #00FF00; /* Texte vert */
+  font-family: 'Courier New', monospace;
+  font-size: 18px;
   margin: 0;
   padding: 0;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .terminal {
-  width: 80%;
-  max-width: 900px;
-  height: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   padding: 20px;
-  border: 2px solid #00FF00;
-  background-color: #000;
-  overflow-y: auto;
-  box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
-  border-radius: 10px;
-}
-
-input[type="text"] {
-  background: black;
-  border: none;
-  color: #00FF00;
-  font-family: "Courier New", Courier, monospace;
-  font-size: 18px;
-  outline: none;
-  width: 100%;
-  padding: 10px;
-  margin-top: 20px;
-  border-top: 1px solid #00FF00;
 }
 
 pre {
+  margin: 0;
+}
+
+#output {
   white-space: pre-wrap;
   word-wrap: break-word;
-  font-size: 18px;
+  max-width: 100%;
+}
+
+.intro-text {
+  font-style: italic;
 }
 
 .command {
+  color: #00FF00;
+}
+
+.prompt {
   color: #00FF00;
   font-weight: bold;
 }
 
 .output {
-  color: #33FF33;
-}
-
-.prompt {
   color: #00FF00;
-  font-weight: bold;
 }
 
-.intro-text {
-  font-size: 20px;
-  margin-bottom: 20px;
+#command {
+  background: transparent;
+  border: none;
+  color: #00FF00;
+  outline: none;
+  font-family: 'Courier New', monospace;
+  font-size: 18px;
 }
 
-.command:hover {
-  color: #66FF66;
-}
-
-.prompt {
-  font-family: "Courier New", Courier, monospace;
-  font-weight: normal;
-  margin-right: 10px;
-}
-
-.prompt, .command {
+.cursor {
   display: inline-block;
+  width: 10px;
+  height: 1.5em;
+  background-color: #00FF00;
+  animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Animation d'écriture pour chaque ligne */
+.typing {
+  display: inline-block;
+  width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: typing 2s steps(30) 1s forwards, blink 0.8s infinite step-end;
+}
+
+@keyframes typing {
+  to {
+    width: 100%;
+  }
 }
