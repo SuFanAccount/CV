@@ -150,6 +150,10 @@ pre {
             window.location.href = `${githubBaseURL}/cv.pdf`;
             return "Téléchargement de cv.pdf...";
           }
+          if (args[0] === "cover.txt" && currentDirectory === "CV") {
+            window.location.href = `${githubBaseURL}/cover.txt`;
+            return "Téléchargement de cover.txt...";
+          }
           return "Fichier non trouvé.";
         },
         cd: (args) => {
@@ -172,8 +176,8 @@ pre {
             <strong>Liste des commandes disponibles :</strong><br>
             <span class="output">ls</span> - Affiche les fichiers et répertoires du répertoire courant.<br>
             <span class="output">cd <i>répertoire</i></span> - Change de répertoire. Par exemple, 'cd projects'.<br>
-            <span class="output">cat <i>fichier</i></span> - Affiche le contenu d'un fichier texte. Exemple : 'cat cv.pdf'.<br>
-            <span class="output">wget <i>fichier</i></span> - Télécharge un fichier. Exemple : 'wget cv.pdf'.<br>
+            <span class="output">cat <i>fichier</i></span> - Affiche le contenu d'un fichier texte. Exemple : 'cat cover.txt'.<br>
+            <span class="output">wget <i>fichier</i></span> - Ouvre un fichier. Exemple : 'wget cv.pdf'.<br>
             <span class="output">clear</span> - Efface l'écran du terminal.<br>
             <span class="output">help</span> - Affiche cette aide avec la liste des commandes.<br>
           `;
