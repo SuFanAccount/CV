@@ -66,6 +66,24 @@
           max-width: 400px;
           height: auto;
         }
+
+        .description-box {
+            background-color: #1e1e1e; /* Fond sombre */
+            color: #33ff33; /* Texte vert */
+            font-family: monospace; /* Police monospace pour le style terminal */
+            padding: 1.5rem; /* Un peu d'espace autour du texte */
+            border-radius: 8px; /* Coins arrondis */
+            border: 2px solid #33ff33; /* Bordure verte */
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.5); /* Ombre verte autour de la boîte */
+            max-width: 600px; /* Largeur maximale pour éviter d'avoir un texte trop large */
+            margin: 1rem auto; /* Centrer la boîte */
+            word-wrap: break-word; /* S'assurer que le texte long ne dépasse pas */
+        }
+        
+        .description-box p {
+            line-height: 1.6; /* Espacement entre les lignes pour améliorer la lisibilité */
+            white-space: pre-wrap; /* Préserve les retours à la ligne */
+        }
     </style>
 </head>
 <body>
@@ -80,23 +98,25 @@
             <div class="project-item">
                 <h2>CESS</h2>
                 <img src="images/CESS.jpg" class="photo" alt="Mon CESS">
-                <p><strong>Date d'obtention :</strong> 2021-2022</p>
-                <p>
-                📄 Certificat : CESS – Technique de Transition Informatique<br>
-                
-                Ce diplôme atteste de mes compétences acquises en technique de transition informatique, validé par le Collège des Étoiles. Au cours de cette année, j'ai développé des compétences fondamentales dans plusieurs domaines clés de l'informatique et des technologies.<br><br>
-                
-                Compétences acquises :<br>
-                - Maîtrise des concepts de programmation et de développement logiciel<br>
-                - Utilisation des outils de gestion de projets informatiques<br>
-                - Formation en systèmes d’exploitation (Linux, Windows)<br>
-                - Initiation à la virtualisation et à la gestion des infrastructures<br>
-                - Mise en place et gestion de réseaux informatiques et sécurité de base<br>
-                - Réalisation de projets informatiques en équipe avec des méthodologies agiles<br>
-                - Développement de jeux et d'applications avec Unity, incluant des projets pratiques et l’utilisation de moteurs de jeu pour des réalisations interactives.<br><br>
-                
-                🔧 Cette formation m'a permis de poser les bases solides pour continuer à évoluer dans le domaine de l'informatique, notamment en cybersécurité et en développement.
-                </p>
+                <div class="description-box">
+                    <p><strong>Date d'obtention :</strong> 2021-2022</p>
+                    <p>
+                    📄 Certificat : CESS – Technique de Transition Informatique<br>
+                    
+                    Ce diplôme atteste de mes compétences acquises en technique de transition informatique, validé par le Collège des Étoiles. Au cours de cette année, j'ai développé des compétences fondamentales dans plusieurs domaines clés de l'informatique et des technologies.<br><br>
+                    
+                    Compétences acquises :<br>
+                    - Maîtrise des concepts de programmation et de développement logiciel<br>
+                    - Utilisation des outils de gestion de projets informatiques<br>
+                    - Formation en systèmes d’exploitation (Linux, Windows)<br>
+                    - Initiation à la virtualisation et à la gestion des infrastructures<br>
+                    - Mise en place et gestion de réseaux informatiques et sécurité de base<br>
+                    - Réalisation de projets informatiques en équipe avec des méthodologies agiles<br>
+                    - Développement de jeux et d'applications avec Unity, incluant des projets pratiques et l’utilisation de moteurs de jeu pour des réalisations interactives.<br><br>
+                    
+                    🔧 Cette formation m'a permis de poser les bases solides pour continuer à évoluer dans le domaine de l'informatique, notamment en cybersécurité et en développement.
+                    </p>
+                </div>
             </div>
         </div>
 
@@ -104,21 +124,23 @@
             <div class="project-item">
                 <h2>Pre Security - TryHackMe</h2>
                 <img src="images/THM-PreSecurity.jpg" class="photo" alt="Certificate of completion">
-                <p><strong>Date d'obtention :</strong> Avril 2025</p>
-                <p>
-                📄 Certificat : Pre Security – TryHackMe<br>
-                
-                Ce certificat valide les compétences fondamentales en cybersécurité acquises à travers le parcours "Pre Security" sur la plateforme TryHackMe.<br><br>
-                
-                Compétences acquises :<br>
-                - Compréhension des bases du réseau (IP, DNS, HTTP, etc.)<br>
-                - Utilisation de la ligne de commande (Linux, Bash)<br>
-                - Gestion des systèmes de fichiers et des permissions<br>
-                - Notions d’infrastructure informatique et de virtualisation<br>
-                - Introduction aux concepts clés en cybersécurité (menaces, acteurs, bonnes pratiques)<br><br>
-                
-                🔐 Ce parcours pose les bases essentielles pour progresser vers l’analyse SOC, les CTFs et la Threat Hunting.
-                </p>
+                <div class="description-box">
+                    <p><strong>Date d'obtention :</strong> Avril 2025</p>
+                    <p>
+                    📄 Certificat : Pre Security – TryHackMe<br>
+                    
+                    Ce certificat valide les compétences fondamentales en cybersécurité acquises à travers le parcours "Pre Security" sur la plateforme TryHackMe.<br><br>
+                    
+                    Compétences acquises :<br>
+                    - Compréhension des bases du réseau (IP, DNS, HTTP, etc.)<br>
+                    - Utilisation de la ligne de commande (Linux, Bash)<br>
+                    - Gestion des systèmes de fichiers et des permissions<br>
+                    - Notions d’infrastructure informatique et de virtualisation<br>
+                    - Introduction aux concepts clés en cybersécurité (menaces, acteurs, bonnes pratiques)<br><br>
+                    
+                    🔐 Ce parcours pose les bases essentielles pour progresser vers l’analyse SOC, les CTFs et la Threat Hunting.
+                    </p>
+                </div>
             </div>
         </div>
         
@@ -126,7 +148,9 @@
             <div class="project-item">
                 <h2>Projet 3</h2>
                 <img src="images/projet3.jpg" class="photo" alt="Image du projet 3">
-                <p>Description du projet 3. Ce projet est dédié à...</p>
+                <div class="description-box">
+                    <p>Description du projet 3. Ce projet est dédié à...</p>
+                </div>
             </div>
         </div>
 
