@@ -71,18 +71,20 @@
             background-color: #1e1e1e; /* Fond sombre */
             color: #33ff33; /* Texte vert */
             font-family: monospace; /* Police monospace pour le style terminal */
-            padding: 1.5rem; /* Un peu d'espace autour du texte */
+            padding: 1rem; /* Réduit le padding pour une meilleure largeur */
             border-radius: 8px; /* Coins arrondis */
             border: 2px solid #33ff33; /* Bordure verte */
             box-shadow: 0 0 15px rgba(0, 255, 0, 0.5); /* Ombre verte autour de la boîte */
             max-width: 600px; /* Largeur maximale pour éviter d'avoir un texte trop large */
-            margin: 1rem auto; /* Centrer la boîte */
+            margin: 1rem auto; /* Centrer la boîte horizontalement */
             word-wrap: break-word; /* S'assurer que le texte long ne dépasse pas */
+            text-align: left; /* Aligner le texte à gauche */
         }
         
         .description-box p {
             line-height: 1.6; /* Espacement entre les lignes pour améliorer la lisibilité */
             white-space: pre-wrap; /* Préserve les retours à la ligne */
+            margin: 0; /* Enlève les marges internes pour éviter les décalages */
         }
     </style>
 </head>
