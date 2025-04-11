@@ -12,20 +12,38 @@
             font-family: monospace, monospace;
             margin: 0;
             padding: 0;
-        }
-
-        h1, h2 {
-            margin: 20px;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .container {
             padding: 20px;
             font-size: 18px;
+            text-align: center;
+            max-width: 800px;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.6);
+            transition: transform 0.3s ease-in-out;
         }
 
-        .command {
-            margin: 5px 0;
-            padding-left: 20px;
+        .container:hover {
+            transform: scale(1.05);
+        }
+
+        h1, h2 {
+            margin: 20px 0;
+            color: #00cc00;
+            font-size: 2.5rem;
+        }
+
+        .section-header {
+            color: #00cc00;
+            font-weight: bold;
         }
 
         a {
@@ -34,18 +52,29 @@
             font-weight: bold;
             display: flex;
             align-items: center;
+            transition: color 0.3s ease, transform 0.3s ease;
+            margin: 10px 0;
+            font-size: 1.2rem;
         }
 
         a:hover {
             color: #66ff66;
+            transform: translateX(5px);
         }
 
-        .section-header {
-            color: #00cc00;
+        .icon {
+            margin-right: 15px;
+            font-size: 1.6rem;
+            transition: transform 0.3s ease;
         }
 
-        .command:hover {
-            color: #66ff66;
+        a:hover .icon {
+            transform: scale(1.2);
+        }
+
+        .command {
+            margin: 5px 0;
+            padding-left: 20px;
         }
 
         .output {
@@ -67,8 +96,26 @@
             }
         }
 
-        .icon {
-            margin-right: 10px;
+        /* Background animation */
+        @keyframes backgroundAnimation {
+            0% {
+                background-color: #000;
+            }
+            50% {
+                background-color: #001400;
+            }
+            100% {
+                background-color: #000;
+            }
+        }
+
+        body {
+            animation: backgroundAnimation 5s infinite;
+        }
+
+        /* Adding a subtle glow effect */
+        .container {
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.6);
         }
     </style>
 </head>
@@ -104,6 +151,7 @@
                 <p><span class="section-header">GitHub:</span></p>
                 <p>$ <a href="https://github.com/TheUnknowing" target="_blank"><i class="fab fa-github icon"></i>Github profile</a></p>
             </div>
+            <div class="cursor"></div>
         </div>
     </div>
 </body>
