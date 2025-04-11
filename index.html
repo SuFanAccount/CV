@@ -20,6 +20,11 @@ body {
   flex-direction: column;
   align-items: flex-start;
   padding: 20px;
+  border: 2px solid #00FF00;
+  border-radius: 10px;
+  margin: 20px;
+  max-width: 90%;
+  box-shadow: 0 0 15px #00FF00;
 }
 
 pre {
@@ -103,12 +108,19 @@ pre {
           setTimeout(typeWriter, 50);
         } else {
           output.innerHTML += "<br>";
+          introDone = true;
+          commandInput.disabled = false;
+          commandInput.focus();
         }
       }
 
       typeWriter();
 
+      commandInput.disabled = true;
+
       let prompt = "CV@guest:~# "; 
+
+      let introDone = false;
 
       // Liste des commandes
       const commands = {
@@ -186,6 +198,7 @@ pre {
 
       // Gestion des commandes
       commandInput.addEventListener("keydown", (e) => {
+        if (!introDone) return; // Bloque tant que l'intro n'est pas terminée
         if (e.key === "Enter") {
           const command = commandInput.value.trim();
           commandInput.value = "";
