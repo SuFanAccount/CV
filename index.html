@@ -98,19 +98,20 @@ pre {
       const commandsList = ["ls", "cd", "cat", "wget", "clear", "help"];
 
       // Introduction avant le shell
-      const introText = `
-             .__         .___
+      const introText = 
+`[ xhd v1.0 booting... ]\n
+       .__         .___
 ___  __|  |__    __| _/
 \  \/  /  |  \  / __ | 
  >    <|   Y  \/ /_/ | 
 /__/\_ \___|  /\____ | 
-      \/    \/      \/ 
-Welcome to xhd’s virtual terminal.
+      \/    \/      \/ \n
+Bienvenue sur le terminal de xhd.
 
-Type 'help' to display available commands.
-Navigate like a real terminal: 'ls', 'cd', 'cat', 'wget', 'clear'...
+Tape la commande 'help' pour afficher les commandes disponibles.
+Utilise 'ls', 'cd', 'cat', 'wget' et amuse-toi.
 
-Initializing shell session... Please wait.`;
+Chargement de l'environnement shell...`;
       let index = 0;
 
       function typeWriter() {
