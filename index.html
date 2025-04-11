@@ -217,9 +217,9 @@ pre {
 
         if (commands[cmd]) {
           const result = commands[cmd](args.slice(1));
-          if (result) output.innerHTML += `<span class="output">${result}</span><br>`;
+          if (result) output.innerHTML += `<span class="output">${result}</span><br><br>`;
         } else {
-          output.innerHTML += `<span class="output">Commande inconnue: ${cmd}</span><br>`;
+          output.innerHTML += `<span class="output">Commande inconnue: ${cmd}</span><br><br>`;
         }
 
         output.scrollTop = output.scrollHeight; 
