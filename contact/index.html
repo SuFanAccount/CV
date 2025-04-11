@@ -4,91 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
         body {
-            background-color: #121212;
+            background-color: #000;
             color: #00ff00;
             font-family: monospace, monospace;
             margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
-            background: linear-gradient(45deg, #121212, #001400);
-        }
-
-        .container {
-            padding: 40px;
-            font-size: 18px;
-            text-align: center;
-            max-width: 900px;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            border-radius: 15px;
-            box-shadow: 0 4px 30px rgba(0, 255, 0, 0.4);
-            transition: transform 0.3s ease-in-out;
         }
 
         h1, h2 {
-            margin: 20px 0;
-            color: #00cc00;
-            font-size: 3rem;
-            text-shadow: 0 0 10px #00ff00;
+            margin: 20px;
         }
 
-        .section-header {
-            color: #00cc00;
-            font-weight: bold;
-            text-transform: uppercase;
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-            display: block;
-            text-shadow: 0 0 5px #66ff66;
+        .container {
+            padding: 20px;
+            font-size: 18px;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+            border-radius: 8px;
+        }
+
+        .command {
+            margin: 5px 0;
+            padding-left: 20px;
         }
 
         a {
             color: #00ff00;
             text-decoration: none;
             font-weight: bold;
-            display: flex;
-            align-items: center;
-            margin: 15px 0;
-            font-size: 1.2rem;
             transition: color 0.3s ease, transform 0.3s ease;
-            position: relative;
         }
 
         a:hover {
             color: #66ff66;
-            transform: translateX(10px);
+            transform: scale(1.1);
         }
 
-        .icon {
-            margin-right: 20px;
-            font-size: 1.6rem;
-            transition: transform 0.3s ease;
+        .section-header {
+            color: #00cc00;
+            font-size: 1.2em;
         }
 
-        a:hover .icon {
-            transform: scale(1.25);
-        }
-
-        .command {
-            margin: 5px 0;
-            padding-left: 20px;
-            font-size: 1.1rem;
+        .command:hover {
+            color: #66ff66;
         }
 
         .output {
             margin-left: 20px;
-            margin-top: 10px;
-            font-size: 1rem;
         }
 
-        /* Cursor blinking effect */
+        /* Adding a blinking effect to simulate terminal cursor */
         .cursor {
             display: inline-block;
             width: 10px;
@@ -103,24 +69,40 @@
             }
         }
 
-        /* Responsive design for smaller screens */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
-
-            h2 {
-                font-size: 1.5rem;
-            }
-
-            .container {
-                padding: 20px;
-            }
-
-            a {
-                font-size: 1rem;
-            }
+        /* Social media logos */
+        .social-icon {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+            vertical-align: middle;
+            transition: transform 0.3s ease;
         }
+
+        .social-icon:hover {
+            transform: scale(1.2);
+        }
+
+        .social-links {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .social-links li {
+            margin: 10px 0;
+        }
+
+        /* Shadow and border radius for links */
+        .command {
+            background: rgba(0, 255, 0, 0.1);
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
+        }
+
+        .command:hover {
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+        }
+
     </style>
 </head>
 <body>
@@ -131,19 +113,11 @@
             <p>$ cat contact_info.txt</p>
             <div class="output">
                 <p><span class="section-header">Social Media:</span></p>
-                <ul>
-                    <li>
-                        <p>$ <a href="https://www.instagram.com/ibn_chafik/" target="_blank"><i class="fab fa-instagram icon"></i>@ibn_chafik (Instagram)</a></p>
-                    </li>
-                    <li>
-                        <p>$ <a href="https://www.linkedin.com/in/chahid-mahi-4b0709250/" target="_blank"><i class="fab fa-linkedin icon"></i>@Mahi_Chahid (LinkedIn)</a></p>
-                    </li>
-                    <li>
-                        <p>$ <a href="https://tryhackme.com/p/TheUnkn0wing" target="_blank"><i class="fab fa-tryhackme icon"></i>@TheUnkn0wing (TryhackMe)</a></p>
-                    </li>
-                    <li>
-                        <p>$ <a href="https://discordapp.com/users/the_unkn0wing" target="_blank"><i class="fab fa-discord icon"></i>@TheUnknowing (Discord)</a></p>
-                    </li>
+                <ul class="social-links">
+                    <li><p>$ <a href="https://www.instagram.com/ibn_chafik/" target="_blank"><img class="social-icon" src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram"> @ibn_chafik (Instagram)</a></p></li>
+                    <li><p>$ <a href="https://www.linkedin.com/in/chahid-mahi-4b0709250/" target="_blank"><img class="social-icon" src="https://upload.wikimedia.org/wikipedia/commons/0/01/LinkedIn_Logo_2023.svg" alt="LinkedIn"> @Mahi_Chahid (LinkedIn)</a></p></li>
+                    <li><p>$ <a href="https://tryhackme.com/p/TheUnkn0wing" target="_blank"><img class="social-icon" src="https://upload.wikimedia.org/wikipedia/commons/d/da/TryHackMe_Logo.svg" alt="TryHackMe"> @TheUnkn0wing (TryhackMe)</a></p></li>
+                    <li><p>$ <a href="https://discordapp.com/users/the_unkn0wing" target="_blank"><img class="social-icon" src="https://upload.wikimedia.org/wikipedia/commons/9/95/Discord_logo_2023.svg" alt="Discord"> @TheUnknowing (Discord)</a></p></li>
                 </ul>
 
                 <p><span class="section-header">Phone:</span></p>
@@ -153,7 +127,7 @@
                 <p>$ mahichahid2003@gmail.com</p>
 
                 <p><span class="section-header">GitHub:</span></p>
-                <p>$ <a href="https://github.com/TheUnknowing" target="_blank"><i class="fab fa-github icon"></i>Github profile</a></p>
+                <p>$ <a href="https://github.com/TheUnknowing" target="_blank">Github profile</a></p>
             </div>
             <div class="cursor"></div>
         </div>
