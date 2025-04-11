@@ -4,41 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
         body {
             background-color: #000;
             color: #00ff00;
-            font-family: 'Courier New', Courier, monospace;
+            font-family: monospace, monospace;
             margin: 0;
             padding: 0;
         }
 
         h1, h2 {
             margin: 20px;
-            font-size: 24px;
-            text-align: center;
-            text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
         .container {
             padding: 20px;
             font-size: 18px;
-            max-width: 800px;
-            margin: 0 auto;
         }
 
         .command {
-            margin: 10px 0;
+            margin: 5px 0;
             padding-left: 20px;
-            font-size: 16px;
         }
 
         a {
             color: #00ff00;
             text-decoration: none;
             font-weight: bold;
-            transition: color 0.3s ease-in-out;
+            display: flex;
+            align-items: center;
         }
 
         a:hover {
@@ -47,13 +42,14 @@
 
         .section-header {
             color: #00cc00;
-            font-weight: bold;
-            margin-top: 10px;
+        }
+
+        .command:hover {
+            color: #66ff66;
         }
 
         .output {
             margin-left: 20px;
-            line-height: 1.6;
         }
 
         /* Adding a blinking effect to simulate terminal cursor */
@@ -63,7 +59,6 @@
             height: 20px;
             background-color: #00ff00;
             animation: blink 1s step-end infinite;
-            margin-left: 5px;
         }
 
         @keyframes blink {
@@ -72,35 +67,9 @@
             }
         }
 
-        .command-line {
-            font-family: 'Courier New', Courier, monospace;
-            display: flex;
-            align-items: center;
+        .icon {
+            margin-right: 10px;
         }
-
-        .command-line .cursor {
-            margin-left: 5px;
-        }
-
-        .command-line:hover {
-            color: #66ff66;
-        }
-
-        /* Adding a smooth scroll effect for anchor links */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Adding some spacing between list items */
-        ul {
-            padding-left: 20px;
-            margin: 0;
-        }
-
-        li {
-            margin-bottom: 8px;
-        }
-
     </style>
 </head>
 <body>
@@ -108,24 +77,32 @@
         <h1>Contact</h1>
         <h2 class="section-header">usr/Mahi_Chahid</h2>
         <div class="command">
-            <p class="command-line">$ cat contact_info.txt</p>
+            <p>$ cat contact_info.txt</p>
             <div class="output">
                 <p><span class="section-header">Social Media:</span></p>
                 <ul>
-                    <li><p>$ <a href="https://www.instagram.com/ibn_chafik/" target="_blank">@ibn_chafik (Instagram)</a></p></li>
-                    <li><p>$ <a href="https://www.linkedin.com/in/chahid-mahi-4b0709250/" target="_blank">@Mahi_Chahid (LinkedIn)</a></p></li>
-                    <li><p>$ <a href="https://tryhackme.com/p/TheUnkn0wing" target="_blank">@TheUnkn0wing (TryhackMe)</a></p></li>
-                    <li><p>$ <a href="https://discordapp.com/users/the_unkn0wing" target="_blank">@TheUnknowing (Discord)</a></p></li>
+                    <li>
+                        <p>$ <a href="https://www.instagram.com/ibn_chafik/" target="_blank"><i class="fab fa-instagram icon"></i>@ibn_chafik (Instagram)</a></p>
+                    </li>
+                    <li>
+                        <p>$ <a href="https://www.linkedin.com/in/chahid-mahi-4b0709250/" target="_blank"><i class="fab fa-linkedin icon"></i>@Mahi_Chahid (LinkedIn)</a></p>
+                    </li>
+                    <li>
+                        <p>$ <a href="https://tryhackme.com/p/TheUnkn0wing" target="_blank"><i class="fab fa-tryhackme icon"></i>@TheUnkn0wing (TryhackMe)</a></p>
+                    </li>
+                    <li>
+                        <p>$ <a href="https://discordapp.com/users/the_unkn0wing" target="_blank"><i class="fab fa-discord icon"></i>@TheUnknowing (Discord)</a></p>
+                    </li>
                 </ul>
 
                 <p><span class="section-header">Phone:</span></p>
                 <p>$ +32 466 47 41 19</p>
 
                 <p><span class="section-header">Email:</span></p>
-                <p>$ <a href="mailto:mahichahid2003@gmail.com">mahichahid2003@gmail.com</a></p>
+                <p>$ mahichahid2003@gmail.com</p>
 
                 <p><span class="section-header">GitHub:</span></p>
-                <p>$ <a href="https://github.com/TheUnknowing" target="_blank">Github profile</a></p>
+                <p>$ <a href="https://github.com/TheUnknowing" target="_blank"><i class="fab fa-github icon"></i>Github profile</a></p>
             </div>
             <div class="cursor"></div>
         </div>
