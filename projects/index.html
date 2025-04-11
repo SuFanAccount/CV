@@ -132,8 +132,15 @@
         </div>
 
         <div class="footer">
-            <span>last login: Tue Apr 11 2025</span>
+            <span id="login-date"></span>
         </div>
     </div>
 </body>
+
+<script>
+    const dateElement = document.getElementById("login-date");
+    const currentDate = new Date();
+    const formattedDate = currentDate.toDateString();  // Formate la date selon la norme (ex: Fri Apr 11 2025)
+    dateElement.textContent = `last login: ${formattedDate}`;
+</script>
 </html>
