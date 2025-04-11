@@ -97,7 +97,10 @@
         <div class="project-row">
             <div class="project-item">
                 <h2>CESS</h2>
-                <img src="images/CESS.jpg" class="photo" alt="Mon CESS">
+                <!-- Envelopper l'image avec un lien pour l'agrandir -->
+                <a href="images/CESS.jpg" class="image-link">
+                    <img src="images/CESS.jpg" class="photo" alt="Mon CESS">
+                </a>
                 <div class="description-box">
                     <p><strong>Date d'obtention :</strong> 2021-2022</p>
                     <p>
@@ -117,6 +120,10 @@ Compétences acquises :<br>
 🔧 Cette formation m'a permis de poser les bases solides pour continuer à évoluer dans le domaine de l'informatique, notamment en cybersécurité et en développement.
                     </p>
                 </div>
+            </div>
+            <!-- Lightbox pour afficher l'image agrandie -->
+            <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+                <img id="lightbox-img" src="" alt="">
             </div>
         </div>
 
