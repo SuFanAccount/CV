@@ -7,43 +7,46 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
         body {
-            background-color: #000;
+            background-color: #121212;
             color: #00ff00;
             font-family: monospace, monospace;
             margin: 0;
             padding: 0;
-            overflow: hidden;
-            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            background: linear-gradient(45deg, #121212, #001400);
         }
 
         .container {
-            padding: 20px;
+            padding: 40px;
             font-size: 18px;
             text-align: center;
-            max-width: 800px;
+            max-width: 900px;
             width: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 255, 0, 0.6);
+            background: rgba(0, 0, 0, 0.85);
+            border-radius: 15px;
+            box-shadow: 0 4px 30px rgba(0, 255, 0, 0.4);
             transition: transform 0.3s ease-in-out;
-        }
-
-        .container:hover {
-            transform: scale(1.05);
         }
 
         h1, h2 {
             margin: 20px 0;
             color: #00cc00;
-            font-size: 2.5rem;
+            font-size: 3rem;
+            text-shadow: 0 0 10px #00ff00;
         }
 
         .section-header {
             color: #00cc00;
             font-weight: bold;
+            text-transform: uppercase;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            display: block;
+            text-shadow: 0 0 5px #66ff66;
         }
 
         a {
@@ -52,36 +55,40 @@
             font-weight: bold;
             display: flex;
             align-items: center;
-            transition: color 0.3s ease, transform 0.3s ease;
-            margin: 10px 0;
+            margin: 15px 0;
             font-size: 1.2rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+            position: relative;
         }
 
         a:hover {
             color: #66ff66;
-            transform: translateX(5px);
+            transform: translateX(10px);
         }
 
         .icon {
-            margin-right: 15px;
+            margin-right: 20px;
             font-size: 1.6rem;
             transition: transform 0.3s ease;
         }
 
         a:hover .icon {
-            transform: scale(1.2);
+            transform: scale(1.25);
         }
 
         .command {
             margin: 5px 0;
             padding-left: 20px;
+            font-size: 1.1rem;
         }
 
         .output {
             margin-left: 20px;
+            margin-top: 10px;
+            font-size: 1rem;
         }
 
-        /* Adding a blinking effect to simulate terminal cursor */
+        /* Cursor blinking effect */
         .cursor {
             display: inline-block;
             width: 10px;
@@ -96,26 +103,23 @@
             }
         }
 
-        /* Background animation */
-        @keyframes backgroundAnimation {
-            0% {
-                background-color: #000;
+        /* Responsive design for smaller screens */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
             }
-            50% {
-                background-color: #001400;
-            }
-            100% {
-                background-color: #000;
-            }
-        }
 
-        body {
-            animation: backgroundAnimation 5s infinite;
-        }
+            h2 {
+                font-size: 1.5rem;
+            }
 
-        /* Adding a subtle glow effect */
-        .container {
-            box-shadow: 0 0 20px rgba(0, 255, 0, 0.6);
+            .container {
+                padding: 20px;
+            }
+
+            a {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
@@ -129,16 +133,16 @@
                 <p><span class="section-header">Social Media:</span></p>
                 <ul>
                     <li>
-                        <p><a href="https://www.instagram.com/ibn_chafik/" target="_blank"><i class="fab fa-instagram icon"></i>@ibn_chafik (Instagram)</a></p>
+                        <p>$ <a href="https://www.instagram.com/ibn_chafik/" target="_blank"><i class="fab fa-instagram icon"></i>@ibn_chafik (Instagram)</a></p>
                     </li>
                     <li>
-                        <p><a href="https://www.linkedin.com/in/chahid-mahi-4b0709250/" target="_blank"><i class="fab fa-linkedin icon"></i>@Mahi_Chahid (LinkedIn)</a></p>
+                        <p>$ <a href="https://www.linkedin.com/in/chahid-mahi-4b0709250/" target="_blank"><i class="fab fa-linkedin icon"></i>@Mahi_Chahid (LinkedIn)</a></p>
                     </li>
                     <li>
-                        <p><a href="https://tryhackme.com/p/TheUnkn0wing" target="_blank"><i class="fab fa-tryhackme icon"></i>@TheUnkn0wing (TryhackMe)</a></p>
+                        <p>$ <a href="https://tryhackme.com/p/TheUnkn0wing" target="_blank"><i class="fab fa-tryhackme icon"></i>@TheUnkn0wing (TryhackMe)</a></p>
                     </li>
                     <li>
-                        <p><a href="https://discordapp.com/users/the_unkn0wing" target="_blank"><i class="fab fa-discord icon"></i>@TheUnknowing (Discord)</a></p>
+                        <p>$ <a href="https://discordapp.com/users/the_unkn0wing" target="_blank"><i class="fab fa-discord icon"></i>@TheUnknowing (Discord)</a></p>
                     </li>
                 </ul>
 
