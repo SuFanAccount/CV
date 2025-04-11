@@ -8,29 +8,37 @@
         body {
             background-color: #000;
             color: #00ff00;
-            font-family: monospace, monospace;
+            font-family: 'Courier New', Courier, monospace;
             margin: 0;
             padding: 0;
         }
 
         h1, h2 {
             margin: 20px;
+            font-size: 24px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .container {
             padding: 20px;
             font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         .command {
-            margin: 5px 0;
+            margin: 10px 0;
             padding-left: 20px;
+            font-size: 16px;
         }
 
         a {
             color: #00ff00;
             text-decoration: none;
             font-weight: bold;
+            transition: color 0.3s ease-in-out;
         }
 
         a:hover {
@@ -39,14 +47,13 @@
 
         .section-header {
             color: #00cc00;
-        }
-
-        .command:hover {
-            color: #66ff66;
+            font-weight: bold;
+            margin-top: 10px;
         }
 
         .output {
             margin-left: 20px;
+            line-height: 1.6;
         }
 
         /* Adding a blinking effect to simulate terminal cursor */
@@ -56,6 +63,7 @@
             height: 20px;
             background-color: #00ff00;
             animation: blink 1s step-end infinite;
+            margin-left: 5px;
         }
 
         @keyframes blink {
@@ -63,6 +71,36 @@
                 background-color: transparent;
             }
         }
+
+        .command-line {
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            align-items: center;
+        }
+
+        .command-line .cursor {
+            margin-left: 5px;
+        }
+
+        .command-line:hover {
+            color: #66ff66;
+        }
+
+        /* Adding a smooth scroll effect for anchor links */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Adding some spacing between list items */
+        ul {
+            padding-left: 20px;
+            margin: 0;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
     </style>
 </head>
 <body>
@@ -70,7 +108,7 @@
         <h1>Contact</h1>
         <h2 class="section-header">usr/Mahi_Chahid</h2>
         <div class="command">
-            <p>$ cat contact_info.txt</p>
+            <p class="command-line">$ cat contact_info.txt</p>
             <div class="output">
                 <p><span class="section-header">Social Media:</span></p>
                 <ul>
@@ -84,7 +122,7 @@
                 <p>$ +32 466 47 41 19</p>
 
                 <p><span class="section-header">Email:</span></p>
-                <p>$ mahichahid2003@gmail.com</p>
+                <p>$ <a href="mailto:mahichahid2003@gmail.com">mahichahid2003@gmail.com</a></p>
 
                 <p><span class="section-header">GitHub:</span></p>
                 <p>$ <a href="https://github.com/TheUnknowing" target="_blank">Github profile</a></p>
