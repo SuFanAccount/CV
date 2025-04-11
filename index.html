@@ -225,18 +225,35 @@ pre {
         output.scrollTop = output.scrollHeight; 
       }
 
-      // Fonction d'auto-complétion
       function autocomplete(input) {
         const value = input.value.trim();
         if (!value) return;
-
-        let suggestions = [...commandsList, ...directories, ...files].filter(item => item.startsWith(value));
-
-        if (suggestions.length === 1) {
-          input.value = suggestions[0] + " ";
-        } else if (suggestions.length > 1) {
-          output.innerHTML += `<span class="output">${suggestions.join("  ")}</span><br>`;
+      
+        const parts = value.split(" ");
+        const cmd = parts[0];
+        const arg = parts[1] || "";
+      
+        // Si on n'a tapé qu'une commande
+        if (parts.length === 1) {
+          const suggestions = commandsList.filter(c => c.startsWith(cmd));
+          if (suggestions.length === 1) {
+            input.value = suggestions[0] + " ";
+          } else if (suggestions.length > 1) {
+            output.innerHTML += `<span class="output">${suggestions.join("  ")}</span><br><br>`;
+          }
         }
+      
+        // Si la commande est connue et on complète un argument
+        else if (commandsList.includes(cmd)) {
+          const suggestions = [...directories, ...files].filter(item => item.startsWith(arg));
+          if (suggestions.length === 1) {
+            input.value = cmd + " " + suggestions[0] + " ";
+          } else if (suggestions.length > 1) {
+            output.innerHTML += `<span class="output">${suggestions.join("  ")}</span><br><br>`;
+          }
+        }
+      
+        output.scrollTop = output.scrollHeight;
       }
     });
   </script>
