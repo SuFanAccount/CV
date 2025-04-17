@@ -78,6 +78,7 @@ pre {
   </style>
 </head>
 <body>
+  <div id="intro" class="intro-text"></div>
   <div class="terminal">
     <pre id="output"></pre>
     <input type="text" id="command" autofocus>
@@ -124,6 +125,45 @@ Navigate like a real terminal: 'ls', 'cd', 'cat', 'wget', 'clear'...
 `;
       let index = 0;
 
+const introMessages = [
+  "Chargement de l’environnement virtuel...",
+  "Connexion au terminal xhd établie."
+];
+
+const introElement = document.getElementById("intro");
+
+function showIntroMessages(messages, index = 0) {
+  if (index >= messages.length) {
+    introElement.remove(); // Supprime la div d’intro
+    setTimeout(() => {
+      typeWriter(); // Lance l’intro complète du shell
+    }, 500);
+    return;
+  }
+
+  let charIndex = 0;
+  introElement.textContent = "";
+
+  const type = setInterval(() => {
+    if (charIndex < messages[index].length) {
+      introElement.textContent += messages[index][charIndex++];
+    } else {
+      clearInterval(type);
+      setTimeout(() => {
+        const erase = setInterval(() => {
+          if (introElement.textContent.length > 0) {
+            introElement.textContent = introElement.textContent.slice(0, -1);
+          } else {
+            clearInterval(erase);
+            setTimeout(() => {
+              showIntroMessages(messages, index + 1); // Message suivant
+            }, 200);
+          }
+        }, 30); // vitesse de suppression
+      }, 1000); // temps d’attente avant suppression
+    }
+  }, 50); // vitesse d’écriture
+  
       function typeWriter() {
         if (index < introText.length) {
           output.innerHTML += introText.charAt(index);
@@ -137,7 +177,7 @@ Navigate like a real terminal: 'ls', 'cd', 'cat', 'wget', 'clear'...
         }
       }
 
-      typeWriter();
+      showIntroMessages(introMessages);
 
       commandInput.disabled = true;
 
