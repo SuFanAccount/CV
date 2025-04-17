@@ -13,6 +13,48 @@ body {
     padding: 2rem;
 }
 
+#welcome-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+    width: 100%;
+    text-align: center;
+    padding: 0.3rem; /* Réduction de l'espacement autour du conteneur */
+}
+
+#welcome-message, #next-message {
+    opacity: 0;
+    font-size: 1.1rem; /* Réduction de la taille du texte */
+    animation-duration: 3s;
+    transition: opacity 0.3s ease-in-out;
+    margin-bottom: 0.3rem; /* Espacement réduit entre les messages */
+}
+
+#welcome-message {
+    animation: fadeInOut 3s;
+}
+
+#next-message {
+    animation: fadeInOut 3s 3s;
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; }
+    25% { opacity: 1; }
+    75% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+#content {
+    display: none;
+    width: 100%;
+    max-width: 900px; /* Réduction de la largeur maximale */
+    padding: 1rem; /* Réduction du padding */
+    margin-top: 1rem; /* Espacement réduit au-dessus du contenu */
+}
+
 main.cv-container {
     max-width: 900px;
     margin: 0 auto;
