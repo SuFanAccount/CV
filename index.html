@@ -99,7 +99,7 @@ pre {
 
       // Introduction avant le shell
       const introText = 
-[ xhd v1.0 booting... ]\n
+`[ xhd v1.0 booting... ]\n
 Initializing shell session... Please wait.\n
 
  /\\_/\\   /\\_/\\   /\\_/\\   /\\_/\\   /\\_/\\   /\\_/\\
@@ -121,7 +121,7 @@ Welcome to xhd’s virtual terminal.
 
 Type 'help' to display available commands.
 Navigate like a real terminal: 'ls', 'cd', 'cat', 'wget', 'clear'...
-;
+`;
       let index = 0;
 
       function typeWriter() {
@@ -149,31 +149,31 @@ Navigate like a real terminal: 'ls', 'cd', 'cat', 'wget', 'clear'...
       const commands = {
         ls: () => {
           if (currentDirectory === "CV") {
-            return ${directories.join("  ")}  ${files.join("  ")};
+            return `${directories.join("  ")}  ${files.join("  ")}`;
           }
           return "Aucun fichier ici.";
         },
         cat: (args) => {
           if (!args[0]) return "Veuillez spécifier un fichier.";
           if (args[0] === "cover.txt" && currentDirectory === "CV") {
-            fetch(${githubBaseURL}/cover.txt)
+            fetch(`${githubBaseURL}/cover.txt`)
               .then(response => response.text())
               .then(text => {
-                output.innerHTML += <pre class="output">${text}</pre><br>;
+                output.innerHTML += `<pre class="output">${text}</pre><br>`;
               })
               .catch(() => {
-                output.innerHTML += <span class="output">Erreur : Impossible d'afficher cover.txt</span><br>;
+                output.innerHTML += `<span class="output">Erreur : Impossible d'afficher cover.txt</span><br>`;
               });
             return "Affichage du contenu de cover.txt...";
           }
           if (args[0] === "cv.pdf" && currentDirectory === "CV") {
-            fetch(${githubBaseURL}/cv.pdf)
+            fetch(`${githubBaseURL}/cv.pdf`)
               .then(response => response.text())
               .then(text => {
-                output.innerHTML += <pre class="output">${text}</pre><br>;
+                output.innerHTML += `<pre class="output">${text}</pre><br>`;
               })
               .catch(() => {
-                output.innerHTML += <span class="output">Erreur : Impossible d'afficher cv.pdf</span><br>;
+                output.innerHTML += `<span class="output">Erreur : Impossible d'afficher cv.pdf</span><br>`;
               });
             return "Affichage du contenu de cv.pdf...";
           }
@@ -182,11 +182,11 @@ Navigate like a real terminal: 'ls', 'cd', 'cat', 'wget', 'clear'...
         wget: (args) => {
           if (!args[0]) return "Veuillez spécifier un fichier.";
           if (args[0] === "cv.pdf" && currentDirectory === "CV") {
-            window.location.href = ${githubBaseURL}/cv.pdf;
+            window.location.href = `${githubBaseURL}/cv.pdf`;
             return "Téléchargement de cv.pdf...";
           }
           if (args[0] === "cover.txt" && currentDirectory === "CV") {
-            window.location.href = ${githubBaseURL}/cover.txt;
+            window.location.href = `${githubBaseURL}/cover.txt`;
             return "Téléchargement de cover.txt...";
           }
           return "Fichier non trouvé.";
@@ -194,9 +194,9 @@ Navigate like a real terminal: 'ls', 'cd', 'cat', 'wget', 'clear'...
         cd: (args) => {
           if (!args[0]) return "Veuillez spécifier un répertoire.";
           if (directories.includes(args[0])) {
-            output.innerHTML += <span class="output">Accès à '${args[0]}'...</span><br>;
+            output.innerHTML += `<span class="output">Accès à '${args[0]}'...</span><br>`;
             setTimeout(() => {
-              window.location.href = ${githubBaseURL}/${args[0]}/index.html;
+              window.location.href = `${githubBaseURL}/${args[0]}/index.html`;
             }, 1000);
             return "";
           }
@@ -207,7 +207,7 @@ Navigate like a real terminal: 'ls', 'cd', 'cat', 'wget', 'clear'...
           return "";
         },
         help: () => {
-          return 
+          return `
             <strong>Liste des commandes disponibles :</strong><br>
             <span class="output">ls</span> - Affiche les fichiers et répertoires du répertoire courant.<br>
             <span class="output">cd <i>répertoire</i></span> - Change de répertoire. Par exemple, 'cd projects'.<br>
@@ -215,7 +215,7 @@ Navigate like a real terminal: 'ls', 'cd', 'cat', 'wget', 'clear'...
             <span class="output">wget <i>fichier</i></span> - Ouvre un fichier. Exemple : 'wget cv.pdf'.<br>
             <span class="output">clear</span> - Efface l'écran du terminal.<br>
             <span class="output">help</span> - Affiche cette aide avec la liste des commandes.<br>
-          ;
+          `;
         }
       };
 
@@ -225,7 +225,7 @@ Navigate like a real terminal: 'ls', 'cd', 'cat', 'wget', 'clear'...
         if (e.key === "Enter") {
           const command = commandInput.value.trim();
           commandInput.value = "";
-          output.innerHTML += <span class="prompt">${prompt}</span><span class="command">${command}</span><br>;
+          output.innerHTML += `<span class="prompt">${prompt}</span><span class="command">${command}</span><br>`;
           executeCommand(command);
         }
         if (e.key === "Tab") {
@@ -240,9 +240,9 @@ Navigate like a real terminal: 'ls', 'cd', 'cat', 'wget', 'clear'...
 
         if (commands[cmd]) {
           const result = commands[cmd](args.slice(1));
-          if (result) output.innerHTML += <span class="output">${result}</span><br><br>;
+          if (result) output.innerHTML += `<span class="output">${result}</span><br><br>`;
         } else {
-          output.innerHTML += <span class="output">Commande inconnue: ${cmd}</span><br><br>;
+          output.innerHTML += `<span class="output">Commande inconnue: ${cmd}</span><br><br>`;
         }
 
         output.scrollTop = output.scrollHeight; 
@@ -262,7 +262,7 @@ Navigate like a real terminal: 'ls', 'cd', 'cat', 'wget', 'clear'...
           if (suggestions.length === 1) {
             input.value = suggestions[0] + " ";
           } else if (suggestions.length > 1) {
-            output.innerHTML += <span class="output">${suggestions.join("  ")}</span><br><br>;
+            output.innerHTML += `<span class="output">${suggestions.join("  ")}</span><br><br>`;
           }
         }
       
@@ -272,7 +272,7 @@ Navigate like a real terminal: 'ls', 'cd', 'cat', 'wget', 'clear'...
           if (suggestions.length === 1) {
             input.value = cmd + " " + suggestions[0] + " ";
           } else if (suggestions.length > 1) {
-            output.innerHTML += <span class="output">${suggestions.join("  ")}</span><br><br>;
+            output.innerHTML += `<span class="output">${suggestions.join("  ")}</span><br><br>`;
           }
         }
       
