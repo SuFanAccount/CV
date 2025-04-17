@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Share Tech Mono', monospace;
+    color: #0f0;
+    background: black;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+#welcome-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+    width: 100%;
+    text-align: center;
+    padding: 0.3rem; /* Réduction de l'espacement autour du conteneur */
+}
+
+#welcome-message, #next-message {
+    opacity: 0;
+    font-size: 1.1rem; /* Réduction de la taille du texte */
+    animation-duration: 3s;
+    transition: opacity 0.3s ease-in-out;
+    margin-bottom: 0.3rem; /* Espacement réduit entre les messages */
+}
+
+#welcome-message {
+    animation: fadeInOut 3s;
+}
+
+#next-message {
+    animation: fadeInOut 3s 3s;
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; }
+    25% { opacity: 1; }
+    75% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+#content {
+    display: none;
+    width: 100%;
+    max-width: 900px; /* Réduction de la largeur maximale */
+    padding: 1rem; /* Réduction du padding */
+    margin-top: 1rem; /* Espacement réduit au-dessus du contenu */
+}
+
+header {
+    text-align: center;
+    text-shadow: 0 0 8px #0f0;
+}
+
+h1, h2 {
+    color: #0f0;
+    font-size: 1.3rem; /* Réduction de la taille des titres */
+    margin-top: 1.5rem;
+}
+
+p, ul {
+    font-size: 0.85rem; /* Réduction de la taille du texte */
+    line-height: 1.2;
+    margin-bottom: 0.6rem; /* Espacement réduit entre les paragraphes */
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li::before {
+    content: "• ";
+    color: #0f0;
+}
+
+#social-media .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem; /* Espacement encore plus réduit entre les liens */
+    margin-top: 0.8rem; /* Espacement réduit */
+    flex-wrap: wrap;
+}
+
+#social-media .social-links a {
+    color: #0f0;
+    text-decoration: none;
+    font-size: 1rem; /* Taille encore plus réduite des liens sociaux */
+    transition: color 0.3s, transform 0.3s;
+}
+
+#social-media .social-links a:hover {
+    color: #ff0;
+    transform: scale(1.05);
+}
+
+#photo-section .photo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem; /* Espacement réduit */
+    padding: 0.5rem;
+    border: 2px dashed #0f0;
+    box-shadow: 0 0 10px #0f0;
+    max-width: 180px; /* Réduction de la taille de l'image */
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#photo-section img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 50%;
+    border: 2px solid #0f0;
+    box-shadow: 0 0 10px #0f0;
+}
+
+/* Animations au survol des textes */
+h2, p, ul li {
+    transition: transform 0.2s, color 0.2s;
+}
+
+h2:hover, p:hover, ul li:hover {
+    transform: scale(1.05);
+    color: #ff0;
+}
+
+/* Mouvement des textes selon la souris */
+body {
+    perspective: 1000px;
+}
+
+main {
+    transform-style: preserve-3d;
+    transition: transform 0.1s;
+    #margin-top: 1.5rem;
+}
+
+/* Bouton de projets */
+#projects button {
+    background: black;
+    color: #0f0;
+    border: 2px solid #0f0;
+    padding: 0.3rem 0.6rem; /* Réduction du padding du bouton */
+    font-size: 0.9rem; /* Taille réduite du texte */
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 1rem; /* Espacement réduit */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#projects button:hover {
+    background: #0f0;
+    color: black;
+    transform: scale(1.05);
+}
+
+/* Formulaire de messages */
+#messages form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem; /* Espacement réduit */
+}
+
+#messages textarea {
+    width: 80%;
+    max-width: 350px; /* Réduction de la largeur de la zone de texte */
+    height: 50px; /* Réduction de la hauteur de la zone de texte */
+    background: black;
+    color: #0f0;
+    border: 2px solid #0f0;
+    padding: 0.3rem;
+    font-family: 'Share Tech Mono', monospace;
+    resize: none;
+    margin-top: 1.3rem;
+}
+
+#messages button {
+    background: black;
+    color: #0f0;
+    border: 2px solid #0f0;
+    padding: 0.4rem 0.7rem; /* Réduction du padding du bouton */
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+#messages button:hover {
+    background: #0f0;
+    color: black;
+    transform: scale(1.05);
+}
+
+/* Responsive - Ajustement des éléments pour petits écrans */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.2rem; /* Réduction de la taille des titres pour petits écrans */
+    }
+
+    #social-media .social-links a {
+        font-size: 0.9rem; /* Taille réduite pour les petits écrans */
+    }
+
+    #photo-section .photo-container {
+        max-width: 160px; /* Réduction de la taille de l'image */
+    }
+
+    #messages textarea {
+        width: 90%;
+    }
+
+    #content {
+        padding: 0.8rem;
+    }
+}
