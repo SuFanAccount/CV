@@ -1,1 +1,9 @@
-cover letter sample
+Cover Letter
+Mahi Chahid
+Cybersecurity Student – Brussels / Liège
+
+As a passionate cybersecurity student currently specializing in network security at HELMo (Haute École Libre Mosane), my goal is to grow into a skilled Threat Hunter or SOC Analyst, actively defending systems against advanced threats.
+
+My training and personal projects have focused on defensive security operations: log analysis, incident response, monitoring, and intrusion detection. I have hands-on experience with tools like Splunk, ELK Stack, Wireshark, and EDR solutions. As a finalist in the 2025 CSCBE and currently pursuing the SAL1 certification on TryHackMe, I continuously push myself through practical, real-world challenges.
+
+I’m seeking opportunities in a dynamic and security-focused environment where I can contribute meaningfully while expanding my technical and analytical skills. Driven by curiosity, precision, and a strong sense of logic, I’m ready to take on complex challenges in cybersecurity defense.
