@@ -1,1 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page d'Accueil</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Chiteux</h1>
+    </header>
+    <main>
+        <section id="welcome-container">
+            <div id="welcome-message">Bonjour voyageur anonyme</div>
+            <div id="next-message">Bienvenue dans mon monde numérique</div>
+            <div id="content">
+                 <section id="photo-section">
+                    <div class="photo-container">
+                        <img src="chiteux.jpg" alt="Photo de moi">
+                    </div>
+                </section>
+                <section>
+                    <h2>À propos de moi</h2>
+                    <p>Je suis un étudiant en cybersécurité passionné par le développement web et les systèmes informatiques.</p>
+                </section>
+                <section>
+                    <h2>Coordonnées</h2>
+                    <ul>
+                        <li>Email : mahichahid2003@gmail.com</li>
+                        <li>Téléphone : +32 47 41 19</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>Compétences</h2>
+                    <ul>
+                        <li>Développement Web</li>
+                        <li>Sécurité informatique</li>
+                        <li>Programmation (Python, C++)</li>
+                    </ul>
+                </section>
+                <section id="social-media">
+                    <h2>Mes réseaux sociaux</h2>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/chiteux/" target="_blank">Instagram</a>
+                        <a href="https://www.linkedin.com/in/chahid-mahi-4b0709250/" target="_blank">LinkedIn</a>
+                        <a href="https://www.youtube.com/@sudo_su05" target="_blank">Youtube</a>
+                    </div>
+                </section>
+                <section id="projects">
+                    <button onclick="window.location.href='achievements.html'">Mes projets et réalisations</button>
+                </section>
+                <section id="messages">
+                    <h2>Un petit message?</h2>
+                    <form action="submit_message.php" method="post">
+                        <textarea name="message" placeholder="Écrivez votre message ici..." required></textarea>
+                        <button type="submit">Envoyer</button>
+                    </form>
+                </section>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
 
