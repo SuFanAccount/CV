@@ -135,12 +135,14 @@
         </div>
     </div>
     <script>
-        // Mouvement de texte avec la souris
-        document.addEventListener('mousemove', (e) => {
-        let x = (e.clientX / window.innerWidth) - 0.5;
-        let y = (e.clientY / window.innerHeight) - 0.5;
-        content.style.transform = `rotateX(${y * 10}deg) rotateY(${x * 10}deg)`;
-    });
+        document.addEventListener("DOMContentLoaded", () => {
+            // Mouvement de texte avec la souris
+            document.addEventListener('mousemove', (e) => {
+                let x = (e.clientX / window.innerWidth) - 0.5;
+                let y = (e.clientY / window.innerHeight) - 0.5;
+                content.style.transform = `rotateX(${y * 10}deg) rotateY(${x * 10}deg)`;
+            });
+        });
     </script>
 </body>
 </html>
