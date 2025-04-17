@@ -55,11 +55,6 @@ body {
     margin-top: 1rem; /* Espacement réduit au-dessus du contenu */
 }
 
-main.cv-container {
-    max-width: 900px;
-    margin: 0 auto;
-}
-
 h2 {
     margin-top: 2rem;
     margin-bottom: 1rem;
